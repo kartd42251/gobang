@@ -1,6 +1,7 @@
 import platform
 import os
 from myturtle import *
+
 def print_gamefield(array2D,size):
     if platform.system == 'Windows':
         os.system('cls')

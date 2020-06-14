@@ -1,6 +1,7 @@
 import turtle
 
 def turtle_init():
+    turtle.screensize(1000,1000)
     turtle.width(3)
     turtle.hideturtle()
 
@@ -22,7 +23,6 @@ def draw_line():
 
 def turtle_gamefield():
     turtle.tracer(False)
-    turtle_init()
     turtle.up()
     turtle.goto(-15*t_size, 15*t_size)
     turtle.down()
