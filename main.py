@@ -116,10 +116,4 @@ while shutdown ==0:
             shutdown = judgement(size)
             print_check(size)
             print('O win')
-            
 
-
-    
-#pokdrpwjfj 
-    
-        #ckroefjoje
