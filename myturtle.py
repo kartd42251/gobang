@@ -45,8 +45,11 @@ def turtle_set_O(x, y):
     turtle.goto((-14+2*(x-1))*t_size-t_size/4, (14-2*(y-1))*t_size-t_size/2)
     turtle.write('O', font=("Arial", 20, "normal"))
 
-def turtle_check_win(size):
+def turtle_check_win(size,str):
+    
     turtle.goto(0,t_size*size+20)
-    turtle.write('Player win', align="center",font=("Arial", 40, "normal"))
-
+    if(str == "USER"):
+        turtle.write('Player win', align="center",font=("Arial", 40, "normal"))
+    if(str == "COMP"):
+        turtle.write('Computer win', align="center",font=("Arial", 40, "normal"))
 

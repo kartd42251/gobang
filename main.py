@@ -1,5 +1,7 @@
 from myturtle import *
 from game_basic import *
+from robottest import *
+
 def main():
     turtle_init()
     turtle_gamefield()
@@ -17,17 +19,17 @@ def main():
         if(check_win(array2D, size) == 1):
             shutdown = 1
             print_gamefield(array2D, size)
-            turtle_check_win(size)
+            turtle_check_win(size,"USER")
 
             print('X win')
 
         else:
             print_gamefield(array2D, size)
-            robot(array2D, size, x)
+            myrobot(array2D, size)
             if(check_win(array2D, size) == 1):
                 shutdown = 1
                 print_gamefield(array2D, size)
-                turtle_check_win(size)
+                turtle_check_win(size,"COMP")
                 print('O win')
 
     turtle.done()
