@@ -52,6 +52,7 @@ def robot(size,x):
                     array2D[i][j+3] = 'O' 
             else:
                 x = 0
+                print(x)
     if(x == 0):
         for i in range(0,size-3):
             for j in range(0,size):
@@ -75,7 +76,6 @@ def robot(size,x):
                     elif(array2D[i][j]==array2D[i+4][j]==array2D[i+2][j]==array2D[i+3][j]=='X'):              
                         array2D[i+2][j] = 'O' 
                 
-                else
 
                    
 
