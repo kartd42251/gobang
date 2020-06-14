@@ -1,5 +1,7 @@
 第一次下載git資料夾：
 	git clone "url"
+	Example:
+		git clone https://github.com/kartd42251/gobang.git
 之後更新資料夾：
 	git pull
 
