@@ -122,4 +122,4 @@ while shutdown ==0:
     
  
     
-        
+        #ckroefjoje
