@@ -25,7 +25,7 @@ def main():
 
         else:
             print_gamefield(array2D, size)
-            myrobot(array2D, size)
+            robot(array2D, size)
             if(check_win(array2D, size) == 1):
                 shutdown = 1
                 print_gamefield(array2D, size)
