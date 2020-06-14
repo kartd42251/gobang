@@ -20,9 +20,24 @@ def draw_line():
         turtle.forward(30*t_size)
         turtle.backward(30*t_size)
 
+def draw_number():
+    turtle.up()
+    turtle.goto(-14*t_size, 15.2*t_size)
+    for i in range(15):
+        turtle.write(i+1, font=("Arial", 15, "normal"))
+        turtle.forward(2*t_size)
+    turtle.goto(-16*t_size, 13.5*t_size)
+    turtle.right(90)
+    for i in range(15):
+        turtle.write(i+1, font=("Arial", 15, "normal"))
+        turtle.forward(2*t_size)
+    turtle.left(90)
 
 def turtle_gamefield():
     turtle.tracer(False)
+    pos_x, pos_y = turtle.pos()
+    draw_number()
+    turtle.goto(pos_x,pos_y)
     turtle.up()
     turtle.goto(-15*t_size, 15*t_size)
     turtle.down()
@@ -33,6 +48,19 @@ def turtle_gamefield():
     turtle.tracer(True)
     turtle.up()
 
+writer = turtle.Turtle()
+writer.hideturtle()
+
+def status(user):
+    writer.clear()
+    writer.speed(0)
+    writer.up()
+    writer.goto(0,350)
+    writer.down()
+    if(user == 1):
+        writer.write("now is O's turn", align="center", font=("Arial", 20, "normal"))
+    if(user == -1):
+        writer.write("now is X's turn", align="center", font=("Arial", 20, "normal"))
 
 t_size = 20
 
@@ -48,8 +76,6 @@ def turtle_set_O(x, y):
 def turtle_check_win(size,str):
     
     turtle.goto(0,t_size*size+20)
-    if(str == "USER"):
-        turtle.write('Player win', align="center",font=("Arial", 40, "normal"))
-    if(str == "COMP"):
-        turtle.write('Computer win', align="center",font=("Arial", 40, "normal"))
+    turtle.write(str+'win', align="center",font=("Arial", 40, "normal"))
+    
 
