@@ -1,4 +1,11 @@
-def print_check(size):
+import platform
+import os
+
+def print_gamefield(size):
+    if platform.system == 'Windows':
+        os.system('cls')
+    if platform.system == 'Linux' or 'Darwin':
+        os.system('clear')
     for i in range(0,size):
         for j in range(0,size):
             print(array2D[i][j],end=" ")
@@ -11,7 +18,7 @@ def set_X(x,y):
 def set_O(x,y):
     if(array2D[x-1][y-1] != ('X' and'Y')):
         array2D[x-1][y-1] = "O"
-def judgement(size):
+def check_win(size):
     for i in range(0,size):
         for j in range(0,size-4):
             if(array2D[i][j]==array2D[i][j+1]==array2D[i][j+2]==array2D[i][j+3]==array2D[i][j+4]==('X'or'O')):                
@@ -76,19 +83,9 @@ def robot(size,x):
                     elif(array2D[i][j]==array2D[i+4][j]==array2D[i+2][j]==array2D[i+3][j]=='X'):              
                         array2D[i+2][j] = 'O' 
                 
-
                    
 
     
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -98,22 +95,22 @@ size = 15
 array2D = [["." for _ in range(size)] for _ in range(size)]        
 while shutdown ==0:
     x = 1
-    print_check(size) 
+    print_gamefield(size) 
     print("X turn")
     x = int(input("x-axis")) 
     y = int(input("y-axis"))
     set_X(y,x)
     
-    if(judgement(size) == 1):
-        shutdown = judgement(size)
-        print_check(size)
+    if(check_win(size) == 1):
+        shutdown = 1
+        print_gamefield(size)
         print('X win')
         
     else:
-        print_check(size) 
+        print_gamefield(size) 
         robot(size,x)
-        if(judgement(size) == 1):
-            shutdown = judgement(size)
-            print_check(size)
+        if(check_win(size) == 1):
+            shutdown = 1
+            print_gamefield(size)
             print('O win')
 
