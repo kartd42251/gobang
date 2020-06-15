@@ -61,7 +61,8 @@ def status(user):
         writer.write("now is O's turn", align="center", font=("Arial", 20, "normal"))
     if(user == -1):
         writer.write("now is X's turn", align="center", font=("Arial", 20, "normal"))
-
+def status_clear():
+    writer.clear()
 t_size = 20
 
 def turtle_set_X(x, y):
@@ -74,8 +75,8 @@ def turtle_set_O(x, y):
     turtle.write('O', font=("Arial", 20, "normal"))
 
 def turtle_check_win(size,str):
-    
+    status_clear()
     turtle.goto(0,t_size*size+20)
-    turtle.write(str+'win', align="center",font=("Arial", 40, "normal"))
+    turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
     
 

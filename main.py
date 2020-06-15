@@ -9,6 +9,7 @@ def main():
     size = 15
     user = 1 # 1 for x -1 for y
     array2D = [["." for _ in range(size)] for _ in range(size)]
+
     while shutdown == 0:
         x = int(turtle.numinput("turtle", "x pos:",
                                 default=None, minval=1, maxval=size))
