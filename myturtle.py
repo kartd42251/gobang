@@ -2,6 +2,8 @@ import turtle
 
 def turtle_init():
     turtle.screensize(1000,1000)
+    turtle.setworldcoordinates(-400,-400,400,400)
+
     turtle.width(3)
     turtle.hideturtle()
 
@@ -78,4 +80,4 @@ def turtle_check_win(size,str):
     status_clear()
     turtle.goto(0,t_size*size+20)
     turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
-   
+

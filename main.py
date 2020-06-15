@@ -1,6 +1,7 @@
 from myturtle import *
 from game_basic import *
-from robottest import *
+
+
 
 def main():
     turtle_init()
@@ -11,14 +12,18 @@ def main():
     array2D = [["." for _ in range(size)] for _ in range(size)]
 
     while shutdown == 0:
+        stupid = 0
+
         x = int(turtle.numinput("turtle", "x pos:",
                                 default=None, minval=1, maxval=size))
         y = int(turtle.numinput("turtle", "y pos:",
                                     default=None, minval=1, maxval=size))
         if(user == 1):
+
             set_X(array2D, y, x)
         elif(user == -1):
             set_O(array2D, y, x)
+
 
         print_gamefield(array2D, size, user)
 
@@ -29,7 +34,9 @@ def main():
                 turtle_check_win(size,"USER1")
             elif(user == -1):
                 turtle_check_win(size,"USER2")
+
         user *= -1
+
 
         # else:
         #     print_gamefield(array2D, size)
