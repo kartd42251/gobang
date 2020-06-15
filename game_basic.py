@@ -22,8 +22,6 @@ def set_X(array2D,x, y):
         turtle_set_X(y, x)
         return 0    
             
-    
-        
       
 def set_O(array2D,x, y):
     if(array2D[x-1][y-1] == ('X'or'Y')):
@@ -34,8 +32,6 @@ def set_O(array2D,x, y):
         turtle_set_O(y, x)
         return 0
         
-
-
 
 def check_win(array2D,size):
     for i in range(0, size):
@@ -61,3 +57,4 @@ def check_win(array2D,size):
 
 
 
+    

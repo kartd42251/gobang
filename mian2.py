@@ -12,8 +12,6 @@ def x_plus():
         x_temp=1
     if(x_temp>15):
         x_temp=15
-
-    print("IUSHWYI")
 def x_mius():
     global x_temp
     x_temp -= 1
@@ -28,6 +26,7 @@ def y_plus():
         y_temp=1
     if(y_temp>15):
         y_temp=15
+        
 def y_mius():
     global y_temp
     y_temp -= 1
@@ -35,12 +34,12 @@ def y_mius():
         y_temp=1
     if(y_temp>15):
         y_temp=15
+        
 def enter():
     global x
     global y
     global x_temp
     global y_temp
-
     x = x_temp
     y = y_temp
 turtle.listen()
@@ -50,12 +49,15 @@ turtle.onkeypress(x_mius,"Left")
 turtle.onkeypress(y_plus,"Down")
 turtle.onkeypress(y_mius,"Up")
 turtle.onkeypress(enter,"space")
+#turtle.onkeypress(,"")
+
 def main():
     global x
     global y
     global x_temp
     global y_temp
     turtle_init()
+ 
     turtle_gamefield()
     arraw = turtle.Turtle()
     arraw.up()
