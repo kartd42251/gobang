@@ -3,7 +3,6 @@ import turtle
 def turtle_init():
     turtle.screensize(1000,1000)
     turtle.setworldcoordinates(-400,-400,400,400)
-
     turtle.width(3)
     turtle.hideturtle()
 
@@ -51,29 +50,29 @@ def turtle_gamefield():
     turtle.up()
 
 writer = turtle.Turtle()
-writer.hideturtle()
 
 def status(user):
+    writer.hideturtle()
     writer.clear()
     writer.speed(0)
     writer.up()
     writer.goto(0,350)
     writer.down()
     if(user == 1):
-        writer.write("now is O's turn", align="center", font=("Arial", 20, "normal"))
+        writer.write("now is x's turn", align="center", font=("Arial", 20, "normal"))
     if(user == -1):
-        writer.write("now is X's turn", align="center", font=("Arial", 20, "normal"))
+        writer.write("now is o's turn", align="center", font=("Arial", 20, "normal"))
 def status_clear():
     writer.clear()
 t_size = 20
 
 def turtle_set_X(x, y):
-    turtle.goto((-14+2*(x-1))*t_size-t_size/4, (14-2*(y-1))*t_size-t_size/2)
+    turtle.goto((-14.2+2*(x-1))*t_size-t_size/4, (13.5-2*(y-1))*t_size-t_size/2)
     turtle.write('X', font=("Arial", 20, "normal"))
 
 
 def turtle_set_O(x, y):
-    turtle.goto((-14+2*(x-1))*t_size-t_size/4, (14-2*(y-1))*t_size-t_size/2)
+    turtle.goto((-14.2+2*(x-1))*t_size-t_size/4, (13.5-2*(y-1))*t_size-t_size/2)
     turtle.write('O', font=("Arial", 20, "normal"))
 
 def turtle_check_win(size,str):

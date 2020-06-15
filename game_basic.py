@@ -61,27 +61,3 @@ def check_win(array2D,size):
 
 
 
-
- 
-                
-           
-
-                   
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-                 
-

@@ -13,19 +13,20 @@ def main():
 
     while shutdown == 0:
         stupid = 0
-
+        print_gamefield(array2D, size, user)
         x = int(turtle.numinput("turtle", "x pos:",
                                 default=None, minval=1, maxval=size))
         y = int(turtle.numinput("turtle", "y pos:",
                                     default=None, minval=1, maxval=size))
         if(user == 1):
-
+            stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
         elif(user == -1):
+            stupid = set_O(array2D, y, x)
             set_O(array2D, y, x)
 
 
-        print_gamefield(array2D, size, user)
+        
 
         if(check_win(array2D, size) == 1):
             shutdown = 1
@@ -35,7 +36,8 @@ def main():
             elif(user == -1):
                 turtle_check_win(size,"USER2")
 
-        user *= -1
+        if(stupid == 0):
+            user *= -1
 
 
         # else:
