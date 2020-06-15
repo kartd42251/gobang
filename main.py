@@ -1,116 +1,47 @@
-import platform
-import os
+from myturtle import *
+from game_basic import *
+from robottest import *
 
-def print_gamefield(size):
-    if platform.system == 'Windows':
-        os.system('cls')
-    if platform.system == 'Linux' or 'Darwin':
-        os.system('clear')
-    for i in range(0,size):
-        for j in range(0,size):
-            print(array2D[i][j],end=" ")
-            if (j == (size -1)):
-                print(" ")
-               
-def set_X(x,y):
-    if(array2D[x-1][y-1] != ('X' and'Y')):
-        array2D[x-1][y-1] = "X" 
-def set_O(x,y):
-    if(array2D[x-1][y-1] != ('X' and'Y')):
-        array2D[x-1][y-1] = "O"
-def check_win(size):
-    for i in range(0,size):
-        for j in range(0,size-4):
-            if(array2D[i][j]==array2D[i][j+1]==array2D[i][j+2]==array2D[i][j+3]==array2D[i][j+4]==('X'or'O')):                
-                return 1
-    for i in range(0,size-4):
-        for j in range(0,size):
-            if(array2D[i][j]==array2D[i+1][j]==array2D[i+2][j]==array2D[i+3][j]==array2D[i+4][j]==('X'or'O')):
-                return  1
-    for i in range(0,size-4):
-        for j in range(0,size-4):        
-            if(array2D[i][j]==array2D[i+1][j+1]==array2D[i+2][j+2]==array2D[i+3][j+3]==array2D[i+4][j+4]==('X'or'O')):
-                return  1
-    for i in range(0,size-4):
-        for j in range(0,size-4):                
-            if(array2D[i][j+4]==array2D[i+2][j+2]==array2D[i+3][j+1]==array2D[i+4][j]==array2D[i+1][j+3]==('X'or'O')):
-                return  1
-def robot(size,x):
-    for i in range(0,size):
-        for j in range(0,size-3):
-            if(array2D[i][j]==array2D[i][j+1]==array2D[i][j+2]==array2D[i][j+3]=='X'):                
-                if(j == 0 and array2D[i][j+4] == '.' ):
-                    array2D[i][j+4] = 'O'
-                elif(j == 11 and array2D[i][j-1] == '.' ):
-                    array2D[i][j-1] = 'O' 
-                elif(j > 0 and j <11):
-                    if(array2D[i][j-1] == 'O' and array2D[i][j+4] == '.' ):
-                        array2D[i][j+4] = 'O' 
-                    elif(array2D[i][j+4] == 'O' and array2D[i][j-1] == '.' ):
-                        array2D[i][j-1] = 'O'
-                    elif(array2D[i][j+4] == '.' and array2D[i][j-1] == '.' ):
-                        array2D[i][j-1] = 'O'    
-            elif(j<11):
-                if(array2D[i][j]==array2D[i][j+1]==array2D[i][j+2]==array2D[i][j+4]=='X'):                
-                    array2D[i][j+3] = 'O' 
-                elif(array2D[i][j]==array2D[i][j+1]==array2D[i][j+3]==array2D[i][j+4]=='X'):                
-                    array2D[i][j+2] = 'O'
-                elif(array2D[i][j]==array2D[i][j+3]==array2D[i][j+2]==array2D[i][j+4]=='X'):                
-                    array2D[i][j+3] = 'O' 
-            else:
-                x = 0
-                print(x)
-    if(x == 0):
-        for i in range(0,size-3):
-            for j in range(0,size):
-                if(array2D[i][j]==array2D[i+1][j]==array2D[i+2][j]==array2D[i+3][j]=='X'):                
-                    if(i == 0 and array2D[i+4][j] == '.' ):
-                        array2D[i+4][j] = 'O'
-                    elif(i == 11 and array2D[i-1][j] == '.' ):
-                        array2D[i-1][j] = 'O' 
-                    elif(i > 0 and i <11):
-                        if(array2D[i-1][j] == 'O' and array2D[i+4][j] == '.' ):
-                            array2D[i+4][j] = 'O' 
-                        elif(array2D[i+4][j] == 'O' and array2D[i-1][j] == '.' ):
-                            array2D[i-1][j] = 'O'
-                        elif(array2D[i+4][j] == '.' and array2D[i-1][j] == '.' ):
-                            array2D[i-1][j] = 'O'    
-                elif(i<11):
-                    if(array2D[i][j]==array2D[i+1][j]==array2D[i+2][j]==array2D[i+4][j]=='X'):                
-                        array2D[i+3][j] = 'O' 
-                    elif(array2D[i][j]==array2D[i+1][j]==array2D[i+4][j]==array2D[i+3][j]=='X'):                
-                        array2D[i+2][j] = 'O'
-                    elif(array2D[i][j]==array2D[i+4][j]==array2D[i+2][j]==array2D[i+3][j]=='X'):              
-                        array2D[i+2][j] = 'O' 
-                
-                   
+def main():
+    turtle_init()
+    turtle_gamefield()
+    shutdown = 0
+    size = 15
+    user = 1 # 1 for x -1 for y
+    array2D = [["." for _ in range(size)] for _ in range(size)]
 
-    
+    while shutdown == 0:
+        x = int(turtle.numinput("turtle", "x pos:",
+                                default=None, minval=1, maxval=size))
+        y = int(turtle.numinput("turtle", "y pos:",
+                                    default=None, minval=1, maxval=size))
+        if(user == 1):
+            set_X(array2D, y, x)
+        elif(user == -1):
+            set_O(array2D, y, x)
 
+        print_gamefield(array2D, size, user)
 
-
-
-shutdown = 0
-size = 15
-array2D = [["." for _ in range(size)] for _ in range(size)]        
-while shutdown ==0:
-    x = 1
-    print_gamefield(size) 
-    print("X turn")
-    x = int(input("x-axis")) 
-    y = int(input("y-axis"))
-    set_X(y,x)
-    
-    if(check_win(size) == 1):
-        shutdown = 1
-        print_gamefield(size)
-        print('X win')
-        
-    else:
-        print_gamefield(size) 
-        robot(size,x)
-        if(check_win(size) == 1):
+        if(check_win(array2D, size) == 1):
             shutdown = 1
-            print_gamefield(size)
-            print('O win')
+            print_gamefield(array2D, size, user)
+            if(user == 1):
+                turtle_check_win(size,"USER1")
+            elif(user == -1):
+                turtle_check_win(size,"USER2")
+        user *= -1
 
+        # else:
+        #     print_gamefield(array2D, size)
+        #     myrobot_pro(array2D, size)
+        #     if(check_win(array2D, size) == 1):
+        #         shutdown = 1
+        #         print_gamefield(array2D, size)
+        #         turtle_check_win(size,"COMP")
+        #         print('O win')
+
+    turtle.done()
+    
+if __name__ == "__main__":
+    main()
+    
