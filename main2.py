@@ -67,7 +67,7 @@ def main():
     size = 15
     user = 1 # 1 for x -1 for y
     array2D = [["." for _ in range(size)] for _ in range(size)]
-    stupid = 0
+    stupid = 2
     print_gamefield(array2D, size, user)
     turtle.listen()
     turtle.onkeypress(x_plus,"Right")
@@ -78,24 +78,21 @@ def main():
     while(not shutdown):
         arrow.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
         turtle.update()
-        print(x_temp,y_temp)
         if(user == 1 and x>0):
             stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
         elif(user == -1 and y>0):
             stupid = set_O(array2D, y, x)
             set_O(array2D, y, x)
-
         if(check_win(array2D, size) == 1):
             shutdown = 1
-            print_gamefield(array2D, size, user)
             if(user == 1):
                 turtle_check_win(size,"USER1")
             elif(user == -1):
                 turtle_check_win(size,"USER2")
-
-        if(stupid == 0):
+        if(stupid == 0 and  check_win(array2D, size)!=1 ):
             user *= -1
+            print_gamefield(array2D, size, user)
 
             # else:
             #     print_gamefield(array2D, size)
