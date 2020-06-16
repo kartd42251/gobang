@@ -1,7 +1,7 @@
 from myturtle import *
 from game_basic import *
 import time
-import functools
+from robot import *
 
 x = 0
 y = 0
@@ -55,10 +55,7 @@ def arrow_init():
 
 
 def main():
-    global x
-    global y
-    global x_temp
-    global y_temp
+
     turtle_init() 
     turtle_gamefield()
     arrow_init()
@@ -78,30 +75,32 @@ def main():
     while(not shutdown):
         arrow.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
         turtle.update()
-        if(user == 1 and x>0):
+        Y = 0
+        X = 0
+        if(user == 1 and x > 0):
             stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
-        elif(user == -1 and y>0):
-            stupid = set_O(array2D, y, x)
-            set_O(array2D, y, x)
+             
+        # elif(user == -1 and y>0):
+        #     stupid = set_O(array2D, y, x)
+        #     set_O(array2D, y, x)
+        
+        elif(user == -1 and y > 0):
+            #stupid = set_O(array2D, y, x)
+            Y,X = eva3(array2D,size)
+            
+            set_O(array2D, Y, X)    
+        
         if(check_win(array2D, size) == 1):
             shutdown = 1
             if(user == 1):
-                turtle_check_win(size,"USER1")
+                turtle_check_win(size,"Jason")
             elif(user == -1):
-                turtle_check_win(size,"USER2")
+                turtle_check_win(size,"Jeffery")
         if(stupid == 0 and  check_win(array2D, size)!=1 ):
             user *= -1
             print_gamefield(array2D, size, user)
-
-            # else:
-            #     print_gamefield(array2D, size)
-            #     myrobot_pro(array2D, size)
-            #     if(check_win(array2D, size) == 1):
-            #         shutdown = 1
-            #         print_gamefield(array2D, size)
-            #         turtle_check_win(size,"COMP")
-            #         print('O win')
+        
     turtle.done()
         
 if __name__ == "__main__":

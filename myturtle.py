@@ -6,6 +6,7 @@ def turtle_init():
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)
     turtle.hideturtle()
+    turtle.tracer(False)
 
 
 def draw_square():

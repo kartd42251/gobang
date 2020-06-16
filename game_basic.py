@@ -3,16 +3,16 @@ import os
 from myturtle import *
 
 def print_gamefield(array2D,size, user):
-    if platform.system == 'Windows':
-        os.system('cls')
-    elif platform.system == 'Linux' or 'Darwin':
-        os.system('clear')
+    # if platform.system == 'Windows':
+    #     os.system('cls')
+    # elif platform.system == 'Linux' or 'Darwin':
+    #     os.system('clear')
     status(user)
-    for i in range(0, size):
-        for j in range(0, size):
-            print(array2D[i][j], end=" ")
-            if (j == (size - 1)):
-                print(" ")
+    # for i in range(0, size):
+    #     for j in range(0, size):
+    #         print(array2D[i][j], end=" ")
+    #         if (j == (size - 1)):
+    #             print(" ")
 
 def set_X(array2D,x, y):
     if(array2D[x-1][y-1] == ('X'or'Y')):
