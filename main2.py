@@ -5,8 +5,8 @@ import functools
 
 x = 0
 y = 0
-x_temp = 1
-y_temp = 1
+x_temp = 8
+y_temp = 8
 
 def x_plus():
     global x_temp
