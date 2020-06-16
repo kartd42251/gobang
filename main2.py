@@ -1,5 +1,6 @@
 from myturtle import *
 from game_basic import *
+from robot import *
 import time
 import functools
 
@@ -65,6 +66,7 @@ def main():
     global y
     global x_temp
     global y_temp
+    test = 0
     turtle_init() 
     turtle_gamefield()
     arrow_init()
@@ -84,6 +86,7 @@ def main():
         elif(user == -1 and y>0):
             stupid = set_O(array2D, y, x)
             set_O(array2D, y, x)
+            print(test)
         if(check_win(array2D, size) == 1):
             shutdown = 1
             if(user == 1):
