@@ -7,8 +7,7 @@ def turtle_init():
     turtle.width(3)
     turtle.hideturtle()
     turtle.tracer(False)
-mode1_turtle = turtle.Turtle()
-mode0_turtle = turtle.Turtle()
+
 
 def draw_square():
     for _ in range(4):
