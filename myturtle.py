@@ -1,6 +1,7 @@
 import turtle
 
 def turtle_init():
+    turtle.right(90)
     turtle.screensize(1000,1000)
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)

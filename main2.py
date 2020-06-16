@@ -53,12 +53,6 @@ def arrow_init():
     arrow.left(90)
 
 
-turtle.listen()
-turtle.onkeypress(x_plus,"Right")
-turtle.onkeypress(x_mius,"Left")
-turtle.onkeypress(y_plus,"Down")
-turtle.onkeypress(y_mius,"Up")
-turtle.onkeypress(enter,"space")
 
 def main():
     global x
@@ -75,6 +69,12 @@ def main():
     array2D = [["." for _ in range(size)] for _ in range(size)]
     stupid = 0
     print_gamefield(array2D, size, user)
+    turtle.listen()
+    turtle.onkeypress(x_plus,"Right")
+    turtle.onkeypress(x_mius,"Left")
+    turtle.onkeypress(y_plus,"Down")
+    turtle.onkeypress(y_mius,"Up")
+    turtle.onkeypress(enter,"space")
     while(not shutdown):
         arrow.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
         turtle.update()
