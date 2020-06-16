@@ -58,9 +58,9 @@ def status(user):
     writer.goto(0,350)
     writer.down()
     if(user == 1):
-        writer.write("now is x's turn", align="center", font=("Arial", 20, "normal"))
+        writer.write("now is Jason's turn", align="center", font=("Arial", 20, "normal"))
     if(user == -1):
-        writer.write("now is o's turn", align="center", font=("Arial", 20, "normal"))
+        writer.write("now is Jeffrey's turn", align="center", font=("Arial", 20, "normal"))
 def status_clear():
     writer.clear()
 t_size = 20
