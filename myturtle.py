@@ -50,7 +50,6 @@ def turtle_gamefield():
     turtle.up()
 
 writer = turtle.Turtle()
-
 def status(user):
     writer.hideturtle()
     writer.clear()

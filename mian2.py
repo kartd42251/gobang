@@ -1,10 +1,13 @@
 from myturtle import *
 from game_basic import *
 import time
+import functools
+
 x = 0
 y = 0
 x_temp = 1
 y_temp = 1
+
 def x_plus():
     global x_temp
     x_temp += 1
@@ -42,26 +45,29 @@ def enter():
     global y_temp
     x = x_temp
     y = y_temp
-turtle.listen()
+    
+arrow = turtle.Turtle()
 
+def arrow_init():
+    arrow.up()
+    arrow.left(90)
+
+
+turtle.listen()
 turtle.onkeypress(x_plus,"Right")
 turtle.onkeypress(x_mius,"Left")
 turtle.onkeypress(y_plus,"Down")
 turtle.onkeypress(y_mius,"Up")
 turtle.onkeypress(enter,"space")
-#turtle.onkeypress(,"")
 
 def main():
     global x
     global y
     global x_temp
     global y_temp
-    turtle_init()
- 
+    turtle_init() 
     turtle_gamefield()
-    arraw = turtle.Turtle()
-    arraw.up()
-    arraw.left(90)
+    arrow_init()
     turtle.right(90)
     shutdown = 0
     size = 15
@@ -70,7 +76,7 @@ def main():
     stupid = 0
     print_gamefield(array2D, size, user)
     while(not shutdown):
-        arraw.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
+        arrow.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
         turtle.update()
         print(x_temp,y_temp)
         if(user == 1 and x>0):
