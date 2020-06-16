@@ -90,7 +90,7 @@ def main():
                 turtle_check_win(size,"USER1")
             elif(user == -1):
                 turtle_check_win(size,"USER2")
-        if(stupid == 0):
+        if(stupid == 0 and  check_win(array2D, size)!=1 ):
             user *= -1
             print_gamefield(array2D, size, user)
 
