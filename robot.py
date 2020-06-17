@@ -170,7 +170,7 @@ def eva3(array2D,size):
 
 def eva_defence(Sum,array2D,x,y):
     Sum = 0
-    if(x<12 and x>2 and y<12 and y>2 ):
+    if(x<14 and x>0 and y<14 and y>0):
         for k in range(1,6):
             if(array2D[x][y+k]!='X'):
                 Sum += k*(k-1)/2
