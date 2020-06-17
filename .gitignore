@@ -6,3 +6,4 @@ main3.py
 dist
 build/v2_main
 v2_main.spec
+__pycache__
