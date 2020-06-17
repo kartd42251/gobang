@@ -252,10 +252,3 @@ def eva_attack(Sum,array2D,x,y):
         return  0  
 
 
-
-
-
-
-
-
-    
