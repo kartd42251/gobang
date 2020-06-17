@@ -185,7 +185,7 @@ def eva_defence(Sum,array2D,x,y):
                 break
         for k in range(1,6):        
             if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)*(2*k-1)/6
+                Sum += k*(k-1)/2
                 break
         for k in range(1,6):        
             if(array2D[x+k][y+k]!='X'):
