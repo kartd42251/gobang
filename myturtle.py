@@ -12,6 +12,7 @@ def draw_square():
     for _ in range(4):
         turtle.forward(30*t_size)
         turtle.right(90)
+
 def arrow_init(arrow):
     arrow.up()
     arrow.left(90)
@@ -55,20 +56,24 @@ def turtle_gamefield():
     turtle.up()
     turtle.right(90)
 
-
-def status(writer,user):
+def writer_init(writer):
     writer.hideturtle()
-    writer.clear()
     writer.speed(0)
+    
+last_user = -2
+def status(writer,user):
     writer.up()
     writer.goto(0,350)
     writer.down()
-    if(user == 1):
-        writer.write("now is Jason's turn", align="center", font=("Arial", 20, "normal"))
-    if(user == -1):
-        writer.write("now is Jeffrey's turn", align="center", font=("Arial", 20, "normal"))
-def status_clear(writer):
-    writer.clear()
+    global last_user
+    if(user != last_user):
+        writer.clear()
+        if(user == 1):
+            writer.write("now is Jason's turn", align="center", font=("Arial", 20, "normal"))
+        if(user == -1):
+            writer.write("now is Jeffery's turn", align="center", font=("Arial", 20, "normal"))
+        last_user = user
+
 t_size = 20
 
 def turtle_set_X(x, y):

@@ -55,15 +55,16 @@ def main():
     arrow = turtle.Turtle()
 
     turtle_init() 
-    turtle_gamefield()
     arrow_init(arrow)
+    writer_init(writer)
+
+    turtle_gamefield()
     shutdown = 0
     size = 15
     user = 1 # 1 for x -1 for y
     array2D = [["." for _ in range(size)] for _ in range(size)]
     stupid = 2
 
-    print_gamefield(array2D, size, user, writer)
 
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
 
@@ -95,9 +96,9 @@ def main():
             elif(user == -1):
                 turtle_check_win(size,"Jeffery",writer)
             
-        if(stupid == 0 and check_win(array2D, size)!=1 ):
+        if(stupid == 0 and not check_win(array2D, size) ):
             user *= -1
-        
+        status(writer,user)
     turtle.done()
         
 if __name__ == "__main__":
