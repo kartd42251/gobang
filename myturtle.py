@@ -12,10 +12,6 @@ def draw_square():
     for _ in range(4):
         turtle.forward(30*t_size)
         turtle.right(90)
-def arrow_init(arrow):
-    arrow.up()
-    arrow.left(90)
-
 
 def draw_line():
     for i in range(15):
@@ -55,22 +51,7 @@ def turtle_gamefield():
     turtle.up()
     turtle.right(90)
 
-
-def status(writer,user):
-    writer.hideturtle()
-    writer.clear()
-    writer.speed(0)
-    writer.up()
-    writer.goto(0,350)
-    writer.down()
-    if(user == 1):
-        writer.write("now is Jason's turn", align="center", font=("Arial", 20, "normal"))
-    if(user == -1):
-        writer.write("now is Jeffrey's turn", align="center", font=("Arial", 20, "normal"))
-def status_clear(writer):
-    writer.clear()
 t_size = 20
-
 def turtle_set_X(x, y):
     turtle.goto((-14.2+2*(x-1))*t_size-t_size/4, (13.5-2*(y-1))*t_size-t_size/2)
     turtle.write('X', font=("Arial", 20, "normal"))
@@ -81,7 +62,30 @@ def turtle_set_O(x, y):
     turtle.write('O', font=("Arial", 20, "normal"))
 
 def turtle_check_win(size,str,writer):
-    status_clear(writer)
+    writer.clear()
     turtle.goto(0,t_size*size+20)
     turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
 
+#arrow
+def arrow_init(arrow):
+    arrow.up()
+    arrow.left(90)
+
+#writer
+def writer_init(writer):
+    writer.hideturtle()
+    writer.speed(0)
+
+last_user = -2
+def status(writer,user):
+    writer.up()
+    writer.goto(0,350)
+    writer.down()
+    global last_user
+    if(user != last_user):
+        writer.clear()
+        if(user == 1):
+            writer.write("now is Jason's turn", align="center", font=("Arial", 20, "normal"))
+        if(user == -1):
+            writer.write("now is Jeffery's turn", align="center", font=("Arial", 20, "normal"))
+        last_user = user
