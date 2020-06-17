@@ -164,7 +164,7 @@ def eva3(array2D,size):
                 _max = eva_result[i][j]
                 i_max = i
                 j_max = j
-    print(i_max,j_max)
+    print("best move (",i_max+1,",",j_max+1,")")
     
     return i_max+1,j_max+1
 

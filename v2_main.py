@@ -82,11 +82,11 @@ def main():
             stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
         if(mode == 0 and user == -1 and y > 0):
-                stupid = set_O(array2D, y, x)
-                set_O(array2D, y, x)
+            stupid = set_O(array2D, y, x)
+            set_O(array2D, y, x)
         if(mode == 1 and user == -1 and y > 0):
-                y, x = eva3(array2D,size)
-                set_O(array2D, y, x)    
+            y, x = eva3(array2D,size)
+            set_O(array2D, y, x)    
         
         if(check_win(array2D, size) == 1):
             shutdown = 1
