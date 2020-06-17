@@ -12,6 +12,9 @@ def draw_square():
     for _ in range(4):
         turtle.forward(30*t_size)
         turtle.right(90)
+def arrow_init(arrow):
+    arrow.up()
+    arrow.left(90)
 
 
 def draw_line():
@@ -50,6 +53,8 @@ def turtle_gamefield():
     draw_line()
     turtle.tracer(True)
     turtle.up()
+    turtle.right(90)
+
 
 def status(writer,user):
     writer.hideturtle()
@@ -75,8 +80,8 @@ def turtle_set_O(x, y):
     turtle.goto((-14.2+2*(x-1))*t_size-t_size/4, (13.5-2*(y-1))*t_size-t_size/2)
     turtle.write('O', font=("Arial", 20, "normal"))
 
-def turtle_check_win(size,str):
-    status_clear()
+def turtle_check_win(size,str,writer):
+    status_clear(writer)
     turtle.goto(0,t_size*size+20)
     turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
 

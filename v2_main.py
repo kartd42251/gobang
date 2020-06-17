@@ -46,28 +46,24 @@ def enter():
     x = x_temp
     y = y_temp
     
-arrow = turtle.Turtle()
 
-def arrow_init():
-    arrow.up()
-    arrow.left(90)
 
 def main():
     mode = -1 # 0 for pvp, 1 for pvc
     
     writer = turtle.Turtle()
+    arrow = turtle.Turtle()
 
     turtle_init() 
     turtle_gamefield()
-    arrow_init()
-    turtle.right(90)
+    arrow_init(arrow)
     shutdown = 0
     size = 15
     user = 1 # 1 for x -1 for y
     array2D = [["." for _ in range(size)] for _ in range(size)]
     stupid = 2
 
-    print_gamefield(array2D, size, user,writer)
+    print_gamefield(array2D, size, user, writer)
 
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
 
@@ -77,6 +73,7 @@ def main():
     turtle.onkeypress(y_plus,"Down")
     turtle.onkeypress(y_mius,"Up")
     turtle.onkeypress(enter,"space")
+
     while(not shutdown):
         arrow.goto((-14.2+2*(x_temp-1))*t_size-t_size/4+t_size, (13.5-2*(y_temp-1))*t_size-t_size/2+t_size)  
         turtle.update()
@@ -84,25 +81,21 @@ def main():
         if(user == 1 and x > 0):
             stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
-        if(mode == 0):
-            if(user == -1 and y > 0):
+        if(mode == 0 and user == -1 and y > 0):
                 stupid = set_O(array2D, y, x)
                 set_O(array2D, y, x)
-        if(mode == 1):
-            if(user == -1 and y > 0):
+        if(mode == 1 and user == -1 and y > 0):
                 y, x = eva3(array2D,size)
                 set_O(array2D, y, x)    
-        
         if(check_win(array2D, size) == 1):
             shutdown = 1
             if(user == 1):
-                turtle_check_win(size,"Jason")
+                turtle_check_win(size,"Jason",writer)
             elif(user == -1):
-                turtle_check_win(size,"Jeffery")
+                turtle_check_win(size,"Jeffery",writer)
             
         if(stupid == 0 and check_win(array2D, size)!=1 ):
             user *= -1
-            print_gamefield(array2D, size, user, writer)
         
     turtle.done()
         
