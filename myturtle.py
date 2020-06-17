@@ -59,7 +59,7 @@ def turtle_gamefield():
 def writer_init(writer):
     writer.hideturtle()
     writer.speed(0)
-    
+
 last_user = -2
 def status(writer,user):
     writer.up()
@@ -86,7 +86,7 @@ def turtle_set_O(x, y):
     turtle.write('O', font=("Arial", 20, "normal"))
 
 def turtle_check_win(size,str,writer):
-    status_clear(writer)
+    writer.clear()
     turtle.goto(0,t_size*size+20)
     turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
 
