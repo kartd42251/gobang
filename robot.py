@@ -284,10 +284,3 @@ def eva_attack(Sum,array2D,x,y):
     else:
         return  0
 
-
-
-
-
-
-
-    

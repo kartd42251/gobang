@@ -2,12 +2,12 @@ import platform
 import os
 from myturtle import *
 
-def print_gamefield(array2D,size, user):
+def print_gamefield(array2D,size, user, writer):
     # if platform.system == 'Windows':
     #     os.system('cls')
     # elif platform.system == 'Linux' or 'Darwin':
     #     os.system('clear')
-    status(user)
+    status(writer,user)
     # for i in range(0, size):
     #     for j in range(0, size):
     #         print(array2D[i][j], end=" ")
