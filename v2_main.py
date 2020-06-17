@@ -1,6 +1,6 @@
 from myturtle import *
 from game_basic import *
-from robot import *
+from robot_max import *
 import time
 
 x = 0
@@ -70,7 +70,11 @@ def main():
     if_same_spot = -1
 
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
+    if(mode == 1):
+        first_hand = turtle.textinput("First hand?","First hand?(y/n)")
 
+    if(first_hand == 'n'):
+        set_O(array2D,8,8)
     key_detect(turtle)
 
     while(not shutdown):
@@ -91,12 +95,13 @@ def main():
             if(user == 1):
                 turtle_check_win(size,"Jason",writer)
             elif(user == -1):
-                turtle_check_win(size,"Jeffery",writer)
+                turtle_check_win(size,"Jeffrey",writer)
         else:
             if(if_same_spot == 0 ):
                 user *= -1
                 status(writer,user)
 
+    
     turtle.done()
         
 if __name__ == "__main__":
