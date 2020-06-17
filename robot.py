@@ -156,7 +156,7 @@ def eva3(array2D,size):
                 eva_result[i][j] = max(eva_attack(Sum,array2D,i,j),eva_defence(Sum,array2D,i,j))
     for i in range(0,size):
         for j in range(0,size):
-            print(eva_result[i][j],end = ' ')
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
         print()
     for i in range(0,size):
         for j in range(0,size):
@@ -203,7 +203,7 @@ def eva_defence(Sum,array2D,x,y):
             if(array2D[x-k][y+k]!='X'):
                 Sum += k*(k-1)/2
                 break
-        return Sum            
+        return int(Sum)            
 
 
     else:
@@ -245,7 +245,7 @@ def eva_attack(Sum,array2D,x,y):
             if(array2D[x-k][y+k]!='O'):
                 Sum += k*(k-1)/2
                 break
-        return Sum            
+        return int(Sum)            
 
 
     else:
