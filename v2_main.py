@@ -1,6 +1,6 @@
 from myturtle import *
 from game_basic import *
-from robot import *
+from robot_pro import *
 import time
 
 x = 0

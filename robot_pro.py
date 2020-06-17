@@ -154,17 +154,17 @@ def eva3(array2D,size):
             Sum = 0
             if(array2D[i][j] == '.'):
                 eva_result[i][j] = max(eva_attack(Sum,array2D,i,j),eva_defence(Sum,array2D,i,j))
-    for i in range(0,size):
-        for j in range(0,size):
-            print("{0:^3d}".format(eva_result[i][j]), end = "")
-        print()
+    # for i in range(0,size):
+    #     for j in range(0,size):
+    #         print("{0:^3d}".format(eva_result[i][j]), end = "")
+    #     print()
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
                 _max = eva_result[i][j]
                 i_max = i
                 j_max = j
-    print("best move (",i_max+1,",",j_max+1,")")
+    #print("best move (",i_max+1,",",j_max+1,")")
     
     return i_max+1,j_max+1
 
