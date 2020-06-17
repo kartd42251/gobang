@@ -1,9 +1,6 @@
 import random 
 from game_basic import *
-size = 15
-Sum =0
-array2D = [["." for _ in range(size)] for _ in range(size)]
-turtle.tracer(False)
+
 def random_init(array2D):
     for i in range(30):
         x = random.randint(1,15)
@@ -146,14 +143,6 @@ def eva(array2D,x,y):
         return 2
     return 0
 
-# manual_init(array2D)
-# turtle_gamefield()
-# turtle.update()
-# for i in range(1,size):
-#     for j in range(1,size):
-#         print("(",j,",",i,") : ",eva(array2D,i,j), end = '. ')
-#     print()
-# turtle.done()
 
 def eva3(array2D,size): 
     eva_result = [[0 for _ in range(size)] for _ in range(size)]

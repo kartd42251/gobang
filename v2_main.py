@@ -2,7 +2,6 @@ from myturtle import *
 from game_basic import *
 from robot import *
 import time
-from robot import *
 
 x = 0
 y = 0
@@ -53,12 +52,9 @@ def arrow_init():
     arrow.up()
     arrow.left(90)
 
-
-
 def main():
-
-  
-
+    mode = -1 # 0 for pvp, 1 for pvc
+    
     turtle_init() 
     turtle_gamefield()
     arrow_init()
@@ -69,6 +65,9 @@ def main():
     array2D = [["." for _ in range(size)] for _ in range(size)]
     stupid = 2
     print_gamefield(array2D, size, user)
+
+    mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
+
     turtle.listen()
     turtle.onkeypress(x_plus,"Right")
     turtle.onkeypress(x_mius,"Left")
@@ -83,25 +82,22 @@ def main():
         if(user == 1 and x > 0):
             stupid = set_X(array2D, y, x)
             set_X(array2D, y, x)
-
-             
-        # elif(user == -1 and y>0):
-        #     stupid = set_O(array2D, y, x)
-        #     set_O(array2D, y, x)
+        if(mode == 0):
+            if(user == -1 and y > 0):
+                stupid = set_O(array2D, y, x)
+                set_O(array2D, y, x)
+        if(mode == 1):
+            if(user == -1 and y > 0):
+                Y,X = eva3(array2D,size)
+                set_O(array2D, Y, X)    
         
-        elif(user == -1 and y > 0):
-            #stupid = set_O(array2D, y, x)
-            Y,X = eva3(array2D,size)
-            
-            set_O(array2D, Y, X)    
-        
-
         if(check_win(array2D, size) == 1):
             shutdown = 1
             if(user == 1):
                 turtle_check_win(size,"Jason")
             elif(user == -1):
                 turtle_check_win(size,"Jeffery")
+            
         if(stupid == 0 and  check_win(array2D, size)!=1 ):
             user *= -1
             print_gamefield(array2D, size, user)
