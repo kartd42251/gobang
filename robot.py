@@ -173,69 +173,36 @@ def eva_defence(Sum,array2D,x,y):
     if(x<12 and x>2 and y<12 and y>2 ):
         for k in range(1,6):
             if(array2D[x][y+k]!='X'):
-                if(array2D[x][y+k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):    
             if(array2D[x][y-k]!='X'):
-                if(array2D[x][y-k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
-                
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):
             if(array2D[x+k][y]!='X'):
-                if(array2D[x+k][y]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):        
             if(array2D[x-k][y]!='X'):
-                if(array2D[x-k][y]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)*(2*k-1)/6
+                break
         for k in range(1,6):        
             if(array2D[x+k][y+k]!='X'):
-                if(array2D[x+k][y+k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):        
             if(array2D[x-k][y-k]!='X'):
-                if(array2D[x-k][y-k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):        
             if(array2D[x+k][y-k]!='X'):
-                if(array2D[x+k][y-k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         for k in range(1,6):        
             if(array2D[x-k][y+k]!='X'):
-                if(array2D[x-k][y+k]=='.'):
-                    Sum += k*(k+1)/2
-                    break
-                else:
-                    Sum += k*(k-1)/2
-                    break
+                Sum += k*(k-1)/2
+                break
         return Sum            
 
 
@@ -284,3 +251,10 @@ def eva_attack(Sum,array2D,x,y):
     else:
         return  0
 
+
+
+
+
+
+
+    
