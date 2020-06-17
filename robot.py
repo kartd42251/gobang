@@ -9,7 +9,7 @@ def random_init(array2D):
 def manual_init(array2D):
     for i in range(7,11):
         set_X(array2D,i,5)
-def eva2(array2D,x,y):
+def eva_recursive(array2D,x,y):
     if( x > 14 or x < 0 or y > 14 or y < 0):
         return 0
     if(array2D[x][y] != 'X') :
@@ -153,9 +153,7 @@ def eva3(array2D,size):
         for j in range(0,size):
             Sum = 0
             if(array2D[i][j] == '.'):
-                if(eva5(Sum,array2D,i,j)>=eva4(Sum,array2D,i,j)):
-                    eva_result[i][j] = eva5(Sum,array2D,i,j)
-                else:eva_result[i][j] = eva4(Sum,array2D,i,j)    
+                eva_result[i][j] = max(eva_attack(Sum,array2D,i,j),eva_defence(Sum,array2D,i,j))
     for i in range(0,size):
         for j in range(0,size):
             print(eva_result[i][j],end = ' ')
@@ -170,7 +168,7 @@ def eva3(array2D,size):
     
     return i_max+1,j_max+1
 
-def eva4(Sum,array2D,x,y):
+def eva_defence(Sum,array2D,x,y):
     Sum = 0
     if(x<12 and x>2 and y<12 and y>2 ):
         for k in range(1,6):
@@ -212,7 +210,7 @@ def eva4(Sum,array2D,x,y):
         return  0  
 
 
-def eva5(Sum,array2D,x,y):
+def eva_attack(Sum,array2D,x,y):
     Sum = 0
     if(x<12 and x>2 and y<12 and y>2 ):
         for k in range(1,6):
