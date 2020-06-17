@@ -216,11 +216,14 @@ def eva_defence(Sum,array2D,x,y):
                 else:
                     Sum += k*(k-1)/2
                 break
+        for k in range(1,6):
+            if(array2D[x][y-k]!='X'): 
+                Sum += k*(k-1)/2
+                break
         return int(Sum)
     if(x== 0 and y >0 and y <14):
         for k in range(1,6):
             if(array2D[x][y+k]!='X'or y+k==14):
-                
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):    
