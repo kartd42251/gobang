@@ -164,7 +164,9 @@ def eva3(array2D,size):
         for j in range(0,size):
             Sum = 0
             if(array2D[i][j] == '.'):
-                eva_result[i][j] = eva4(Sum,array2D,i,j)
+                if(eva5(Sum,array2D,i,j)>=eva4(Sum,array2D,i,j)):
+                    eva_result[i][j] = eva5(Sum,array2D,i,j)
+                else:eva_result[i][j] = eva4(Sum,array2D,i,j)    
     for i in range(0,size):
         for j in range(0,size):
             print(eva_result[i][j],end = ' ')
@@ -184,41 +186,84 @@ def eva4(Sum,array2D,x,y):
     if(x<12 and x>2 and y<12 and y>2 ):
         for k in range(1,6):
             if(array2D[x][y+k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):    
             if(array2D[x][y-k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):
             if(array2D[x+k][y]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):        
             if(array2D[x-k][y]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):        
             if(array2D[x+k][y+k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):        
             if(array2D[x-k][y-k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):        
             if(array2D[x+k][y-k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         for k in range(1,6):        
             if(array2D[x-k][y+k]!='X'):
-                Sum += (k-1)*k/2
+                Sum += k*(k-1)*(2*k-1)/6
                 break
         return Sum            
 
 
     else:
-        return 0           
+        return  0  
+
+
+def eva5(Sum,array2D,x,y):
+    Sum = 0
+    if(x<12 and x>2 and y<12 and y>2 ):
+        for k in range(1,6):
+            if(array2D[x][y+k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):    
+            if(array2D[x][y-k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):
+            if(array2D[x+k][y]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):        
+            if(array2D[x-k][y]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):        
+            if(array2D[x+k][y+k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):        
+            if(array2D[x-k][y-k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):        
+            if(array2D[x+k][y-k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        for k in range(1,6):        
+            if(array2D[x-k][y+k]!='O'):
+                Sum += k*(k-1)/2
+                break
+        return Sum            
+
+
+    else:
+        return  0  
+
 
 
 
