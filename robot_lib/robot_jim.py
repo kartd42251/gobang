@@ -178,7 +178,6 @@ def eva_defence(array2D,x,y):
     else:
         return 0
 
-    
 def eva_attack(array2D,x,y):
     Sum_h = 0
     Sum_a = 0 
