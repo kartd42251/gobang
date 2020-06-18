@@ -72,7 +72,7 @@ def main():
     user = 1 # 1 for x -1 for y
     array2D = [['.' for _ in range(size)] for _ in range(size)]
     if_same_spot = -1
-
+    #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")

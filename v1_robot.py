@@ -1,5 +1,6 @@
 import random 
 from game_basic import *
+dic = {(4,0):(100),(4,1):(90),(3,0):70,(3,1):30,(2,0):20,(2,1):0,(1,1):0,(1,0):0,(0,0):0,(0,1):0}
 
 def random_init(array2D):
     for i in range(30):
@@ -44,67 +45,66 @@ def eva_defence(Sum,array2D,x,y):
     if(x<16 and x>0 and y<16 and y>0):
         for k in range(1,6):
             if(array2D[x][y+k]!='X'): 
-                Sum_h += k*(k+1)/2
                 if(array2D[x][y+k]=='.'): 
-                    Sum_h *= 2
+                    Sum_h +=  dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_h += 2    
+                    Sum_h += dict.fromkeys(dic,(k-1,1))    
             break
         for k in range(1,6):
             if(array2D[x+k][y]!='X'): 
                 Sum_a += k*(k+1)/2
                 if(array2D[x+k][y]=='.'): 
-                    Sum_a *= 2
+                    Sum_a += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_a += 2    
+                    Sum_a += dict.fromkeys(dic,(k-1,1))    
             break
         for k in range(1,6):        
             if(array2D[x-k][y]!='X'): 
                 Sum_a+= k*(k+1)/2
                 if(array2D[x-k][y]=='.'): 
-                    Sum_a *= 2
+                    Sum_a += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_a += 2    
+                    Sum_a += dict.fromkeys(dic,(k-1,1))   
             break
         for k in range(1,6):        
             if(array2D[x+k][y+k]!='X'): 
                 Sum_l += k*(k+1)/2
                 if(array2D[x+k][y+k]=='.'): 
-                    Sum_l *= 2
+                    Sum_l += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_l += 2    
+                    Sum_l += dict.fromkeys(dic,(k-1,1))     
             break
         for k in range(1,6):        
             if(array2D[x-k][y-k]!='X'): 
                 Sum_l += k*(k+1)/2
                 if(array2D[x-k][y-k]=='.'): 
-                    Sum_l *= 2
+                    Sum_l += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_l += 2    
+                    Sum_l += dict.fromkeys(dic,(k-1,1))   
             break
         for k in range(1,6):        
             if(array2D[x+k][y-k]!='X'): 
                 Sum_r += k*(k+1)/2
                 if(array2D[x+k][y-k]=='.'): 
-                    Sum_r *= 2
+                    Sum_r += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_r += 2    
+                    Sum_r += dict.fromkeys(dic,(k-1,1))     
             break
         for k in range(1,6):        
             if(array2D[x-k][y+k]!='X'): 
                 Sum_r += k*(k+1)/2
                 if(array2D[x-k][y+k]=='.'): 
-                    Sum_r *= 2
+                    Sum_r += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_r+= 2    
+                    Sum_r += dict.fromkeys(dic,(k-1,1))     
             break
         for k in range(1,6): 
             if(array2D[x][y-k]!='X'): 
                 Sum_h += k*(k+1)/2
                 if(array2D[x][y-k]=='.'): 
-                    Sum_h *= 2
+                    Sum_h += dict.fromkeys(dic,(k-1,0))
                 else:
-                    Sum_h += 2    
+                    Sum_h += dict.fromkeys(dic,(k-1,1))    
             break
         return int(Sum_h + Sum_a +Sum_l +Sum_r)
     else:
@@ -115,7 +115,6 @@ def eva_attack(Sum,array2D,x,y):
     Sum = 0
    
     return 0
-
 
 
 
