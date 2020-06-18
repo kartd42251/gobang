@@ -19,12 +19,12 @@ def manual_init(array2D):
     set_X(array2D,5,4)
     set_O(array2D,7,4)
 
-def single_side_eva_defence(array2D,head_point,vector):
+def SSD_eva_def(array2D,head_point,vector):
     cross_num = 0
     is_dead = 0
     new_head_point = [0,0]
-    new_head_point[0]  = head_point[0] 
-    new_head_point[1]  = head_point[1] 
+    new_head_point[0] = head_point[0] 
+    new_head_point[1] = head_point[1] 
     for i in range(5):
         new_head_point[0] += vector[0]
         new_head_point[1] += vector[1]
@@ -41,12 +41,12 @@ def single_side_eva_defence(array2D,head_point,vector):
             break
     return cross_num, is_dead
 
-def single_side_eva_offence(array2D,head_point,vector):
+def SSD_eva_off(array2D,head_point,vector):
     cross_num = 0
     is_dead = 0
     new_head_point = [0,0]
-    new_head_point[0]  = head_point[0] 
-    new_head_point[1]  = head_point[1] 
+    new_head_point[0] = head_point[0] 
+    new_head_point[1] = head_point[1] 
     for i in range(5):
         new_head_point[0] += vector[0]
         new_head_point[1] += vector[1]
@@ -64,52 +64,63 @@ def single_side_eva_offence(array2D,head_point,vector):
     return cross_num, is_dead
 
 def eva_4(array2D,x,y,mode):
-    Sum_h = 0
-    Sum_a = 0
-    Sum_l = 0
-    Sum_r = 0
-    if(mode == "sum"):
-        if(x<16 and x>0 and y<16 and y>0):
-            Sum_h =  dic.get((single_side_eva_defence(array2D,(x,y),(1,0)))) + \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,0))))+ \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,0)))) + \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,0))))
+    Sum_h = Sum_a = Sum_l = Sum_r = 0
 
-            Sum_a =  dic.get((single_side_eva_defence(array2D,(x,y),(0,1)))) +  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(0,-1))))+  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(0,1)))) +  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(0,-1))))
+    if(0 < x < 16 and 0 < y < 16):
+        if(mode == "sum"  ):
+            Sum_h = dic.get((SSD_eva_def(array2D,(x,y),(1,0)))) + \
+                    dic.get((SSD_eva_def(array2D,(x,y),(-1,0))))+ \
+                    dic.get((SSD_eva_off(array2D,(x,y),(1,0)))) + \
+                    dic.get((SSD_eva_off(array2D,(x,y),(-1,0))))
 
-            Sum_l =  dic.get((single_side_eva_defence(array2D,(x,y),(1,1)))) +  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,-1))))+ \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,1)))) +  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,-1))))
+            Sum_a = dic.get((SSD_eva_def(array2D,(x,y),(0,1)))) +  \
+                    dic.get((SSD_eva_def(array2D,(x,y),(0,-1))))+  \
+                    dic.get((SSD_eva_off(array2D,(x,y),(0,1)))) +  \
+                    dic.get((SSD_eva_off(array2D,(x,y),(0,-1))))
 
-            Sum_r =  dic.get((single_side_eva_defence(array2D,(x,y),(1,-1))))+  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,1))))+  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,-1))))+  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,1))))
-    if(mode == "max"):
-        if(x<16 and x>0 and y<16 and y>0):
-            Sum_h = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,0)))) + \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,0)))),
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,0)))) + \
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,0)))))
+            Sum_l = dic.get((SSD_eva_def(array2D,(x,y),(1,1)))) +  \
+                    dic.get((SSD_eva_def(array2D,(x,y),(-1,-1))))+ \
+                    dic.get((SSD_eva_off(array2D,(x,y),(1,1)))) +  \
+                    dic.get((SSD_eva_off(array2D,(x,y),(-1,-1))))
 
-            Sum_a = max(dic.get((single_side_eva_defence(array2D,(x,y),(0,1)))) +  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(0,-1)))),
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(0,1)))) +  \
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(0,-1)))))
+            Sum_r = dic.get((SSD_eva_def(array2D,(x,y),(1,-1))))+  \
+                    dic.get((SSD_eva_def(array2D,(x,y),(-1,1))))+  \
+                    dic.get((SSD_eva_off(array2D,(x,y),(1,-1))))+  \
+                    dic.get((SSD_eva_off(array2D,(x,y),(-1,1))))
+        if(mode == "max"):
+            if(SSD_eva_def(array2D,(x,y),(1,0))[0]+SSD_eva_def(array2D,(x,y),(-1,0))[0] >= 4 or\
+                SSD_eva_off(array2D,(x,y),(1,0))[0]+SSD_eva_off(array2D,(x,y),(-1,0))[0] >= 4):
+                Sum_h = dic.get((4,1))
+            else:
+                Sum_h = max(dic.get(SSD_eva_def(array2D,(x,y),(1,0))) + \
+                    dic.get(SSD_eva_def(array2D,(x,y),(-1,0))),
+                    dic2.get(SSD_eva_off(array2D,(x,y),(1,0))) + \
+                    dic2.get(SSD_eva_off(array2D,(x,y),(-1,0))))
+            if(SSD_eva_def(array2D,(x,y),(0,1))[0]+SSD_eva_def(array2D,(x,y),(0,-1))[0] >= 4 or\
+                SSD_eva_off(array2D,(x,y),(0,1))[0]+SSD_eva_off(array2D,(x,y),(0,-1))[0] >= 4):
+                Sum_a = dic.get((4,1))
+            else:
+                Sum_a = max(dic.get(SSD_eva_def(array2D,(x,y),(0,1))) +  \
+                    dic.get(SSD_eva_def(array2D,(x,y),(0,-1))),
+                    dic2.get(SSD_eva_off(array2D,(x,y),(0,1))) +  \
+                    dic2.get(SSD_eva_off(array2D,(x,y),(0,-1))))
+            if(SSD_eva_def(array2D,(x,y),(1,1))[0]+SSD_eva_def(array2D,(x,y),(-1,-1))[0] >= 4 or\
+                SSD_eva_off(array2D,(x,y),(1,1))[0]+SSD_eva_off(array2D,(x,y),(-1,-1))[0] >= 4):
+                Sum_l = dic.get((4,1))
+            else:
+                Sum_l = max(dic.get(SSD_eva_def(array2D,(x,y),(1,1))) +  \
+                    dic.get(SSD_eva_def(array2D,(x,y),(-1,-1))),
+                    dic2.get(SSD_eva_off(array2D,(x,y),(1,1))) +  \
+                    dic2.get(SSD_eva_off(array2D,(x,y),(-1,-1))))
+            if(SSD_eva_def(array2D,(x,y),(1,-1))[0]+SSD_eva_def(array2D,(x,y),(-1,1))[0] >= 4 or\
+                SSD_eva_off(array2D,(x,y),(1,-1))[0]+SSD_eva_off(array2D,(x,y),(-1,1))[0] >= 4):
+                Sum_r = dic.get((4,1))
+            else:
+                Sum_r = max(dic.get(SSD_eva_def(array2D,(x,y),(1,-1)))+  \
+                    dic.get(SSD_eva_def(array2D,(x,y),(-1,1))),
+                    dic2.get(SSD_eva_off(array2D,(x,y),(1,-1)))+  \
+                    dic2.get(SSD_eva_off(array2D,(x,y),(-1,1))))
 
-            Sum_l = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,1)))) +  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,-1)))),
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,1)))) +  \
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,-1)))))
-
-            Sum_r = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,-1))))+  \
-                    dic.get((single_side_eva_defence(array2D,(x,y),(-1,1)))),
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,-1))))+  \
-                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,1)))))
     return Sum_h+Sum_a+Sum_l+Sum_r
 
 def eva3(array2D,size): 
