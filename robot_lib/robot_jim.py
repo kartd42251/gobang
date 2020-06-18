@@ -18,6 +18,27 @@ def manual_init(array2D):
     set_X(array2D,5,4)
     set_O(array2D,7,4)
 
+def single_side_eva(array2D,head_point,vector):
+    cross_num = 0
+    is_dead = 0
+    new_head_point = [0,0]
+    new_head_point[0]  = head_point[0] 
+    new_head_point[1]  = head_point[1] 
+    for i in range(5):
+        if(array2D[new_head_point[0]][new_head_point[1]] == 'O'):
+            is_dead = 1
+            break
+        if(array2D[new_head_point[0]][new_head_point[1]] == '.'):
+            break
+        if(array2D[new_head_point[0]][new_head_point[1]] == "X"):
+            cross_num += 1
+        new_head_point[0]  = new_head_point[0] + vector[0]
+        new_head_point[1]  = new_head_point[1] + vector[1]
+        if(new_head_point[0] > 16 or new_head_point[0] < 1 or \
+           new_head_point[1] > 16 or new_head_point[1] < 1):
+            break
+    return cross_num, is_dead
+
 
 def eva3(array2D,size): 
     eva_result = [[0 for _ in range(size)] for _ in range(size)]
