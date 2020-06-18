@@ -5,7 +5,6 @@ v4 pofan
 
 *pyinstaller 參數
 	pyinstaller -F v2_main.py -p ../game_lib/ -p ../robot_lib/ --distpath ../dist
-#11:08
 
 
 第一次下載git資料夾：
