@@ -143,10 +143,10 @@ def eva_defence(array2D,x,y):
 
     
 def eva_attack(array2D,x,y):
-    Sum_h = 0
-    Sum_a = 0 
-    Sum_l = 0
-    Sum_r = 0
+    Sum_h = 1
+    Sum_a = 1
+    Sum_l = 1
+    Sum_r = 1
     if(x<16 and x>0 and y<16 and y>0):
         for k in range(1,6):
             if(array2D[x][y+k]!='O'): 
