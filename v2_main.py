@@ -1,6 +1,10 @@
+import sys
+sys.path.insert(1, 'game_lib')
+sys.path.insert(1, 'robot_lib')
+
 from myturtle import *
 from game_basic import *
-from robot_max import *
+from robot_jeffrey import *
 import time
 
 x = 0
