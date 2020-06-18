@@ -71,6 +71,11 @@ def main():
     size = 17
     user = 1 # 1 for x -1 for y
     array2D = [['.' for _ in range(size)] for _ in range(size)]
+    for i in range (size):
+        array2D[0][i]='J'
+        array2D[14][i]='J'
+        array2D[i][0]='J'
+        array2D[i][14]='J'
     if_same_spot = -1
     #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
