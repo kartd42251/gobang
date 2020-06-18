@@ -29,7 +29,7 @@ def single_side_eva_defence(array2D,head_point,vector):
         new_head_point[1] += vector[1]
         if(array2D[new_head_point[0]][new_head_point[1]] == '.'):
             break
-        if(array2D[new_head_point[0]][new_head_point[1]] == 'O'):
+        if(array2D[new_head_point[0]][new_head_point[1]] == 'O' or array2D[new_head_point[0]][new_head_point[1]] == 'J'):
             is_dead = 1
             break
         if(array2D[new_head_point[0]][new_head_point[1]] == "X"):
@@ -51,7 +51,7 @@ def single_side_eva_offence(array2D,head_point,vector):
         new_head_point[1] += vector[1]
         if(array2D[new_head_point[0]][new_head_point[1]] == '.'):
             break
-        if(array2D[new_head_point[0]][new_head_point[1]] == 'X'):
+        if(array2D[new_head_point[0]][new_head_point[1]] == 'X' or array2D[new_head_point[0]][new_head_point[1]] == 'J'):
             is_dead = 1
             break
         if(array2D[new_head_point[0]][new_head_point[1]] == "O"):
@@ -179,10 +179,10 @@ def eva_defence(array2D,x,y):
         return 0
 
 def eva_attack(array2D,x,y):
-    Sum_h = 0
-    Sum_a = 0 
-    Sum_l = 0
-    Sum_r = 0
+    Sum_h = 1
+    Sum_a = 1
+    Sum_l = 1
+    Sum_r = 1
     if(x<16 and x>0 and y<16 and y>0):
         for k in range(1,6):
             if(array2D[x][y+k]!='O'): 
