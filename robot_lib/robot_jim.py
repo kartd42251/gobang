@@ -18,7 +18,7 @@ def manual_init(array2D):
     set_X(array2D,5,4)
     set_O(array2D,7,4)
 
-def single_side_eva(array2D,head_point,vector):
+def single_side_eva_defence(array2D,head_point,vector):
     cross_num = 0
     is_dead = 0
     new_head_point = [0,0]
@@ -29,29 +29,66 @@ def single_side_eva(array2D,head_point,vector):
         new_head_point[1] += vector[1]
         if(array2D[new_head_point[0]][new_head_point[1]] == '.'):
             break
-        if(array2D[new_head_point[0]][new_head_point[1]] == 'O'):
+        if(array2D[new_head_point[0]][new_head_point[1]] == 'O' or array2D[new_head_point[0]][new_head_point[1]] == 'J'):
             is_dead = 1
             break
         if(array2D[new_head_point[0]][new_head_point[1]] == "X"):
             cross_num+=1
-
         
         if(new_head_point[0] > 16 or new_head_point[0] < 1 or \
            new_head_point[1] > 16 or new_head_point[1] < 1):
             break
     return cross_num, is_dead
 
-def eva_defence_test(array2D,x,y):
+def single_side_eva_offence(array2D,head_point,vector):
+    cross_num = 0
+    is_dead = 0
+    new_head_point = [0,0]
+    new_head_point[0]  = head_point[0] 
+    new_head_point[1]  = head_point[1] 
+    for i in range(5):
+        new_head_point[0] += vector[0]
+        new_head_point[1] += vector[1]
+        if(array2D[new_head_point[0]][new_head_point[1]] == '.'):
+            break
+        if(array2D[new_head_point[0]][new_head_point[1]] == 'X' or array2D[new_head_point[0]][new_head_point[1]] == 'J'):
+            is_dead = 1
+            break
+        if(array2D[new_head_point[0]][new_head_point[1]] == "O"):
+            cross_num+=1
+
+        if(new_head_point[0] > 16 or new_head_point[0] < 1 or \
+           new_head_point[1] > 16 or new_head_point[1] < 1):
+            break
+    return cross_num, is_dead
+
+def eva_max(array2D,x,y):
     Sum_h = 0
     Sum_a = 0
     Sum_l = 0
     Sum_r = 0
     if(x<16 and x>0 and y<16 and y>0):
-        Sum_h =  dic.get((single_side_eva(array2D,(x,y),(1,0)))) +  dic.get((single_side_eva(array2D,(x,y),(-1,0))))
-        Sum_a =  dic.get((single_side_eva(array2D,(x,y),(0,1)))) +  dic.get((single_side_eva(array2D,(x,y),(0,-1))))
-        Sum_l =  dic.get((single_side_eva(array2D,(x,y),(1,1)))) +  dic.get((single_side_eva(array2D,(x,y),(-1,-1))))
-        Sum_r =  dic.get((single_side_eva(array2D,(x,y),(1,-1))))+  dic.get((single_side_eva(array2D,(x,y),(-1,1))))
+        Sum_h =  dic.get((single_side_eva_defence(array2D,(x,y),(1,0)))) + \
+                 dic.get((single_side_eva_defence(array2D,(x,y),(-1,0))))+ \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(1,0)))) + \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(-1,0))))
+
+        Sum_a =  dic.get((single_side_eva_defence(array2D,(x,y),(0,1)))) +  \
+                 dic.get((single_side_eva_defence(array2D,(x,y),(0,-1))))+  \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(0,1)))) +  \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(0,-1))))
+
+        Sum_l =  dic.get((single_side_eva_defence(array2D,(x,y),(1,1)))) +  \
+                 dic.get((single_side_eva_defence(array2D,(x,y),(-1,-1))))+ \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(1,1)))) +  \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(-1,-1))))
+
+        Sum_r =  dic.get((single_side_eva_defence(array2D,(x,y),(1,-1))))+  \
+                 dic.get((single_side_eva_defence(array2D,(x,y),(-1,1))))+  \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(1,-1))))+  \
+                 dic.get((single_side_eva_offence(array2D,(x,y),(-1,1))))
     return Sum_h+Sum_a+Sum_l+Sum_r
+
 def eva3(array2D,size): 
     eva_result = [[0 for _ in range(size)] for _ in range(size)]
     _max = -1
@@ -60,7 +97,7 @@ def eva3(array2D,size):
     for i in range(0,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
-                eva_result[i][j] = max(eva_defence(array2D,i,j),eva_attack(array2D,i,j))
+                eva_result[i][j] = eva_max(array2D,i,j)
     for i in range(0,size):
         for j in range(0,size):
             print("{0:^3d}".format(eva_result[i][j]), end = "")
