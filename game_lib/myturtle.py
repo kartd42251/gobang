@@ -2,7 +2,7 @@ import turtle
 
 def turtle_init():
     turtle.right(90)
-    turtle.screensize(1000,1000)
+    turtle.screensize(1500,1500)
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)
     turtle.hideturtle()
@@ -63,8 +63,8 @@ def turtle_set_O(x, y):
 
 def turtle_check_win(size,str,writer):
     writer.clear()
-    turtle.goto(0,t_size*size+20)
-    turtle.write(str+' win', align="center",font=("Arial", 40, "normal"))
+    turtle.goto(0,t_size*size)
+    turtle.write(str+' win', align="center",font=("Arial", 30, "normal"))
 
 #arrow
 def arrow_init(arrow):
