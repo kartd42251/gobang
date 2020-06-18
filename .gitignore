@@ -3,7 +3,7 @@ test.py
 robottest.py
 main3.py
 *.pyc
-dist
-build/v2_main
+build
 v2_main.spec
 __pycache__
+*.spec

@@ -1,7 +1,12 @@
-jim--v1
-julie--v2
-jeffrey--v3
-andy--v4
+v1 jim
+v2 allen
+v3 jeffrey
+v4 pofan
+
+*pyinstaller 參數
+	pyinstaller -F v2_main.py -p ../game_lib/ -p ../robot_lib/ --distpath ../dist
+#11:08
+
 
 第一次下載git資料夾：
 	git clone "url"
