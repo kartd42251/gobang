@@ -1,3 +1,8 @@
+v1 jim
+v2 allen
+v3 jeffrey
+v4 pofan
+
 第一次下載git資料夾：
 	git clone "url"
 	Example:
