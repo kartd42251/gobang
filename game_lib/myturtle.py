@@ -89,3 +89,36 @@ def status(writer,user):
         if(user == -1):
             writer.write("now is Jeffery's turn", align="center", font=("Arial", 20, "normal"))
         last_user = user
+def choice_character():
+    IMG = [0,0,0]
+    
+    for i in range(3):
+        IMG[i] = turtle.Turtle()
+        turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img"+str(i+2)+".gif") 
+        IMG[i].shape("/Users/Elaine/Desktop/gobang/game_src/img"+str(i+2)+".gif")  
+
+        IMG[i].up()
+        IMG[i].goto(200*(i-1),0)
+        def process(x,y):
+            if(x <= -110):
+                img = IMG[0]
+                img.goto(-330,300)
+                IMG[1].hideturtle() 
+                IMG[2].hideturtle() 
+            elif(-90 < x <= 90):
+                img = IMG[1]
+                img.goto(-330,300)
+                IMG[0].hideturtle()
+                IMG[2].hideturtle() 
+            elif( x < 290 ):
+                img = IMG[2]
+                img.goto(-330,300)
+                IMG[0].hideturtle()
+                IMG[1].hideturtle() 
+            jef = turtle.Turtle()
+            jef.up()
+            turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img0.gif")
+            jef.shape("/Users/Elaine/Desktop/gobang/game_src/img0.gif")
+            jef.goto(330,300)
+            return
+        IMG[i].onclick(process)
