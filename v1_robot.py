@@ -164,263 +164,89 @@ def eva3(array2D,size):
                 _max = eva_result[i][j]
                 i_max = i
                 j_max = j
-    print("best move (",i_max+1,",",j_max+1,")")
+    print("best move (",i_max,",",j_max,")")
     
-    return i_max+1,j_max+1
+    return i_max,j_max
 
 def eva_defence(Sum,array2D,x,y):
-    Sum = 0
-    if(x<14 and x>0 and y<14 and y>0):
+    Sum_h = 0
+    Sum_a = 0 
+    Sum_l = 0
+    Sum_r = 0
+    if(x<16 and x>0 and y<16 and y>0):
         for k in range(1,6):
-            if(array2D[x][y+k]!='X'or y+k==14): 
-                if(array2D[x][14]=='X' and y+k==14):
-                   Sum += k*(k+1)/2 
+            if(array2D[x][y+k]!='X'): 
+                Sum_h += k*(k+1)/2
+                if(array2D[x][y+k]=='.'): 
+                    Sum_h *= 2
                 else:
-                    Sum += k*(k-1)/2
-                break
+                    Sum_h += 2    
+            break
         for k in range(1,6):
-            if(array2D[x+k][y]!='X'or x+k ==14):
-                if(array2D[14][y]=='X' and x+k==14):
-                   Sum += k*(k+1)/2 
+            if(array2D[x+k][y]!='X'): 
+                Sum_a += k*(k+1)/2
+                if(array2D[x+k][y]=='.'): 
+                    Sum_a *= 2
                 else:
-                    Sum += k*(k-1)/2
-                break
+                    Sum_a += 2    
+            break
         for k in range(1,6):        
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y+k]!='X'or y+k==14 or x+k ==14):
-                if(array2D[14][y+k]=='X' and x+k==14):
-                   Sum += k*(k+1)/2
-                elif(array2D[x+k][14]=='X' and y+k==14):
-                   Sum += k*(k+1)/2 
+            if(array2D[x-k][y]!='X'): 
+                Sum_a+= k*(k+1)/2
+                if(array2D[x-k][y]=='.'): 
+                    Sum_a *= 2
                 else:
-                    Sum += k*(k-1)/2
-                break
+                    Sum_a += 2    
+            break
         for k in range(1,6):        
-            if(array2D[x-k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y-k]!='X'or x+k ==14):
-                if(array2D[14][y-k]=='X' and x+k==14):
-                   Sum += k*(k+1)/2
+            if(array2D[x+k][y+k]!='X'): 
+                Sum_l += k*(k+1)/2
+                if(array2D[x+k][y+k]=='.'): 
+                    Sum_l *= 2
                 else:
-                    Sum += k*(k-1)/2
-                break
+                    Sum_l += 2    
+            break
         for k in range(1,6):        
-            if(array2D[x-k][y+k]!='X'or y+k ==14):
-                if(array2D[x-k][14]=='X' and y+k==14):
-                    Sum += k*(k+1)/2 
+            if(array2D[x-k][y-k]!='X'): 
+                Sum_l += k*(k+1)/2
+                if(array2D[x-k][y-k]=='.'): 
+                    Sum_l *= 2
                 else:
-                    Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
+                    Sum_l += 2    
+            break
+        for k in range(1,6):        
+            if(array2D[x+k][y-k]!='X'): 
+                Sum_r += k*(k+1)/2
+                if(array2D[x+k][y-k]=='.'): 
+                    Sum_r *= 2
+                else:
+                    Sum_r += 2    
+            break
+        for k in range(1,6):        
+            if(array2D[x-k][y+k]!='X'): 
+                Sum_r += k*(k+1)/2
+                if(array2D[x-k][y+k]=='.'): 
+                    Sum_r *= 2
+                else:
+                    Sum_r+= 2    
+            break
+        for k in range(1,6): 
             if(array2D[x][y-k]!='X'): 
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(x== 0 and y >0 and y <14):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='X'or y+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):    
-            if(array2D[x][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y+k]!='X'or y+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum) 
-    if(y == 0 and x>0 and x<14):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='X'or x+k==14):
-                if(array2D[14][y]=='X'and x+k==14):
-                    Sum += k*(k+1)/2 
-                    break
+                Sum_h += k*(k+1)/2
+                if(array2D[x][y-k]=='.'): 
+                    Sum_h *= 2
                 else:
-                    Sum += k*(k-1)/2
-                    break
-        for k in range(1,6):        
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y+k]!='X'or x+k==14):
-                if(array2D[14][y+k]=='X'and x+k==14):
-                    Sum += k*(k+1)/2 
-                    break  
-                else:
-                    Sum += k*(k-1)/2
-                    break
-        for k in range(1,6):        
-            if(array2D[x-k][y+k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(y == 0 and x ==0):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='X'):   
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y+k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(y == 0 and x == 14):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y+k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(x== 14 and y == 14):
-        for k in range(1,6):
-            if(array2D[x][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(x== 0 and y ==14):
-        for k in range(1,6):    
-            if(array2D[x][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(x==14 and y<14 and y>0):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='X'or y+k==14): 
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):    
-            if(array2D[x][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y+k]!='X'or y+k==14):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-    if(x<14 and x>0 and y==14):
-        for k in range(1,6):    
-            if(array2D[x][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='X'or x+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y-k]!='X'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y-k]!='X'or x+k==14):
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)
-                   
-
-
+                    Sum_h += 2    
+            break
+        return int(Sum_h + Sum_a +Sum_l +Sum_r)
     else:
-        return  0  
+        return 0
 
-
+    
 def eva_attack(Sum,array2D,x,y):
     Sum = 0
-    if(x<14 and x>0 and y<14 and y>0 ):
-        for k in range(1,6):
-            if(array2D[x][y+k]!='O'or y+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):    
-            if(array2D[x][y-k]!='O'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):
-            if(array2D[x+k][y]!='O'or x+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y]!='O'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y+k]!='O'or x+k==14 or y+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y-k]!='O'):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x+k][y-k]!='O'or x+k==14):
-                Sum += k*(k-1)/2
-                break
-        for k in range(1,6):        
-            if(array2D[x-k][y+k]!='O')or y+k==14:
-                Sum += k*(k-1)/2
-                break
-        return int(Sum)            
-
-
-    else:
-        return  0
-
+   
+    return 0
 
 
 

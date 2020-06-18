@@ -1,6 +1,6 @@
 from myturtle import *
 from game_basic import *
-from robot_max import *
+from v1_robot import *
 import time
 
 x = 0
@@ -64,7 +64,7 @@ def main():
 
     turtle_gamefield()
     shutdown = 0
-    size = 15
+    size = 17
     user = 1 # 1 for x -1 for y
     array2D = [['.' for _ in range(size)] for _ in range(size)]
     if_same_spot = -1

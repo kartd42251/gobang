@@ -4,20 +4,20 @@ from myturtle import *
 
 
 def set_X(array2D,x, y):
-    if(array2D[x-1][y-1] == ('X'or'Y')):
+    if(array2D[x][y] == ('X'or'Y')):
         return 1
-    elif(array2D[x-1][y-1] == ('.')):
-        array2D[x-1][y-1] = "X"
+    elif(array2D[x][y] == ('.')):
+        array2D[x][y] = "X"
         turtle_set_X(y, x)
         return 0    
             
       
 def set_O(array2D,x, y):
-    if(array2D[x-1][y-1] == ('X'or'Y')):
+    if(array2D[x][y] == ('X'or'Y')):
         return 1
 
-    elif(array2D[x-1][y-1] == ('.')):
-        array2D[x-1][y-1] = "O"
+    elif(array2D[x][y] == ('.')):
+        array2D[x][y] = "O"
         turtle_set_O(y, x)
         return 0
         

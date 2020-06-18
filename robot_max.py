@@ -21,10 +21,12 @@ def eva3(array2D,size):
             Sum = 0
             if(array2D[i][j] == '.'):
                 eva_result[i][j] = max(eva_attack(Sum,array2D,i,j),eva_defence(Sum,array2D,i,j))
-    # for i in range(0,size):
-    #     for j in range(0,size):
-    #         print("{0:^3d}".format(eva_result[i][j]), end = "")
-    #     print()
+    for i in range(0,size):
+        for j in range(0,size):
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
+        print()
+    print()
+
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
@@ -43,7 +45,7 @@ def eva_defence(Sum,array2D,x,y):
                 if(array2D[x][14]=='X' and y+k==14):
                    Sum += k*(k+1)/2
                 elif(k>4) :
-                    Sum += 100
+                    Sum += k*(k+1)/2 
                 else:
                     Sum += k*(k-1)/2
                 break
@@ -90,9 +92,15 @@ def eva_defence(Sum,array2D,x,y):
                 Sum += k*(k-1)/2
                 break
         return int(Sum)
-    if(x== 0 and y >0 and y <14):
+    if(x== 0 and 0 < y <14):
         for k in range(1,6):
-            if(array2D[x][y+k]!='X'or y+k==14):
+            if(y+k == 14):
+                if(array2D[x][y+k]=='X'):
+                    Sum += k*(k+1)/2
+                else:
+                    Sum += k*(k-1)/2
+                break
+            elif(array2D[x][y+k]!='X'):
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):    
@@ -118,7 +126,13 @@ def eva_defence(Sum,array2D,x,y):
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):
-            if(array2D[x+k][y]!='X'or x+k==14):
+            if(x+k==14):
+                if(array2D[x+k][y]=='X'):
+                    Sum += k*(k+1)/2
+                else:
+                    Sum += k*(k-1)/2
+                break
+            elif(array2D[x+k][y]!='X'):
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):        
@@ -192,7 +206,13 @@ def eva_defence(Sum,array2D,x,y):
         return int(Sum)
     if(x==14 and y<14 and y>0):
         for k in range(1,6):
-            if(array2D[x][y+k]!='X'or y+k==14): 
+            if(y+k == 14):
+                if(array2D[x][y+k]=='X'):
+                    Sum += k*(k+1)/2
+                else:
+                    Sum += k*(k-1)/2
+                break
+            elif(array2D[x][y+k]!='X'): 
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):    
@@ -218,7 +238,13 @@ def eva_defence(Sum,array2D,x,y):
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):
-            if(array2D[x+k][y]!='X'or x+k==14):
+            if(x+k ==14):
+                if(array2D[x+k][y]=='X'):
+                    Sum += k*(k+1)/2
+                else:
+                    Sum += k*(k-1)/2 
+                break    
+            elif(array2D[x+k][y]!='X'):
                 Sum += k*(k-1)/2
                 break
         for k in range(1,6):        
@@ -248,7 +274,7 @@ def eva_attack(Sum,array2D,x,y):
             if(array2D[x][y+k]!='O'or y+k==14):
                 Sum += k*(k-1)/2
             elif(k>4):
-                Sum += 101
+                Sum += k*(k+1)/2 
             break
         for k in range(1,6):    
             if(array2D[x][y-k]!='O'):
