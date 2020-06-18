@@ -1,6 +1,7 @@
 import random 
 from game_basic import *
 dic = {(4,0):1000,(4,1):900,(3,0):70,(3,1):15,(2,0):20,(2,1):0,(1,0):5,(0,0):0,(0,1):0,(1,1):0}
+dic2 = {(4,0):10000,(4,1):900,(3,0):70,(3,1):15,(2,0):20,(2,1):0,(1,0):5,(0,0):0,(0,1):0,(1,1):0}
 
 def random_init(array2D):
     for i in range(30):
@@ -92,23 +93,23 @@ def eva_4(array2D,x,y,mode):
         if(x<16 and x>0 and y<16 and y>0):
             Sum_h = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,0)))) + \
                     dic.get((single_side_eva_defence(array2D,(x,y),(-1,0)))),
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,0)))) + \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,0)))))
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,0)))) + \
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,0)))))
 
             Sum_a = max(dic.get((single_side_eva_defence(array2D,(x,y),(0,1)))) +  \
                     dic.get((single_side_eva_defence(array2D,(x,y),(0,-1)))),
-                    dic.get((single_side_eva_offence(array2D,(x,y),(0,1)))) +  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(0,-1)))))
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(0,1)))) +  \
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(0,-1)))))
 
             Sum_l = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,1)))) +  \
                     dic.get((single_side_eva_defence(array2D,(x,y),(-1,-1)))),
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,1)))) +  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,-1)))))
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,1)))) +  \
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,-1)))))
 
             Sum_r = max(dic.get((single_side_eva_defence(array2D,(x,y),(1,-1))))+  \
                     dic.get((single_side_eva_defence(array2D,(x,y),(-1,1)))),
-                    dic.get((single_side_eva_offence(array2D,(x,y),(1,-1))))+  \
-                    dic.get((single_side_eva_offence(array2D,(x,y),(-1,1)))))
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(1,-1))))+  \
+                    dic2.get((single_side_eva_offence(array2D,(x,y),(-1,1)))))
     return Sum_h+Sum_a+Sum_l+Sum_r
 
 def eva3(array2D,size): 
