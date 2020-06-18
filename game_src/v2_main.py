@@ -4,7 +4,7 @@ sys.path.insert(1, '../robot_lib')
 
 from myturtle import *
 from game_basic import *
-from robot_jeffrey import *
+from robot_jim import *
 import time
 
 x = 0
@@ -56,6 +56,8 @@ def key_detect(turtle):
     turtle.onkeypress(y_mius,"Up")
     turtle.onkeypress(enter,"space")
 
+        
+
 def main():
     mode = -1 # 0 for pvp, 1 for pvc
     
@@ -77,7 +79,7 @@ def main():
         array2D[i][0]='J'
         array2D[i][14]='J'
     if_same_spot = -1
-    manual_init(array2D)
+    #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
@@ -85,7 +87,7 @@ def main():
     if(first_hand == 'n'):
         set_O(array2D,8,8)
     key_detect(turtle)
-
+    choice_character()
     while(not shutdown):
         arrow.goto((-13.4+2*(x_temp-1))*t_size, (14-2*(y_temp-1))*t_size)  
         turtle.update()
