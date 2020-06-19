@@ -257,9 +257,9 @@ def eva_defence(array2D,x,y):
                     Sum_a = 0  
                 break
         for k in range(1,6):        
-            if(array2D[x+k][y+k]!='X'): 
+            if(array2D[x+k][y+k]!='X'):
+                ct_l += k-1 
                 if(array2D[x+k][y+k]=='.'):
-                    ct_l += k-1 
                     Sum_l += dic.get((k-1,0))
                     stupid_l += 100
                 elif(array2D[x+k][y+k]=='J'):
