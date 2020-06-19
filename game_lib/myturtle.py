@@ -91,7 +91,6 @@ def status(writer,user):
         last_user = user
 def choice_character():
     def process(x,y):
-        print(x)
         if(-290 <= x <= -110 ):
             img = IMG[0]
             img.goto(-330,300)
@@ -116,39 +115,19 @@ def choice_character():
 
     IMG = [0]*3
     randList = [2,3,4,5,6,7,8,9,10]
-    rand_index = random.sample(randList,3)
+    rand_index = random.sample(randList,3)       
+    print(rand_index)
 
     for i in range(3):
         
         IMG[i] = turtle.Turtle()
 
-        turtle.addshape("./img"+str(i+2)+".gif") 
-        IMG[i].shape("./img"+str(i+2)+".gif")  
+        turtle.addshape("./img"+str(rand_index[i])+".gif") 
+        IMG[i].shape("./img"+str(rand_index[i])+".gif")  
 
         IMG[i].up()
         IMG[i].goto(200*(i-1),0)
-        def process(x,y):
-            if(x <= -110):
-                img = IMG[0]
-                img.goto(-330,300)
-                IMG[1].hideturtle() 
-                IMG[2].hideturtle() 
-            elif(-90 < x <= 90):
-                img = IMG[1]
-                img.goto(-330,300)
-                IMG[0].hideturtle()
-                IMG[2].hideturtle() 
-            elif( x < 290 ):
-                img = IMG[2]
-                img.goto(-330,300)
-                IMG[0].hideturtle()
-                IMG[1].hideturtle() 
-            jef = turtle.Turtle()
-            jef.up()
-            turtle.addshape("./img0.gif")
-            jef.shape("./img0.gif")
-            jef.goto(330,300)
-            return
+
         IMG[i].onclick(process)
 
     
