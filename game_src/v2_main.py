@@ -56,7 +56,6 @@ def key_detect(turtle):
     turtle.onkeypress(y_mius,"Up")
     turtle.onkeypress(enter,"space")
 
-        
 
 def main():
     mode = -1 # 0 for pvp, 1 for pvc
@@ -75,9 +74,9 @@ def main():
     array2D = [['.' for _ in range(size)] for _ in range(size)]
     for i in range (size):
         array2D[0][i]='J'
-        array2D[14][i]='J'
+        array2D[16][i]='J'
         array2D[i][0]='J'
-        array2D[i][14]='J'
+        array2D[i][16]='J'
     if_same_spot = -1
     #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
@@ -104,9 +103,11 @@ def main():
             shutdown = 1
             writer.clear()
             if(user == 1):
-                turtle_check_win(size,"Jason",writer)
+                turtle_check_win(size,"User",writer)
+
             elif(user == -1):
-                turtle_check_win(size,"Jeffrey",writer)
+                turtle_check_win(size,"Comp",writer)
+            ending_surprise(user)
         else:
             if(if_same_spot == 0 ):
                 user *= -1
