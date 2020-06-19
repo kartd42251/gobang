@@ -83,6 +83,8 @@ def main():
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
+    if(mode == 0):
+        first_hand = 'n'
 
     if(first_hand == 'n'):
         set_O(array2D,8,8)
