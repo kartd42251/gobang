@@ -66,8 +66,10 @@ def main():
     turtle_init() 
     arrow_init(arrow)
     writer_init(writer)
-
+    file_init()
+    
     turtle_gamefield()
+    turtle_win_rate()
     shutdown = 0
     size = 17
     user = 1 # 1 for x -1 for y
@@ -79,7 +81,7 @@ def main():
         array2D[i][16]='J'
 
     if_same_spot = -1
-    #manual_init(array2D)
+    manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
