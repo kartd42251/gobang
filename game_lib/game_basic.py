@@ -68,7 +68,6 @@ def readWinRate():
         line = fobj.readline()
     fobj.close()
     for ch in line:
-        print("DEBUG",ch)
         if(ch == '*'):
             win += 1
         elif(ch == '@'):
