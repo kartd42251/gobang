@@ -4,8 +4,7 @@ v3 jeffrey
 v4 pofan
 
 *pyinstaller 參數
-	pyinstaller -F v2_main.py -p ../game_lib/ -p ../robot_lib/ --distpath ../dist
-
+pyinstaller -F main.py -p ../game_lib/ -p ../robot_lib/ --distpath ../dist --onefile
 
 第一次下載git資料夾：
 	git clone "url"
