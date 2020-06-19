@@ -9,11 +9,11 @@ def random_init(array2D):
         y = random.randint(1,15)
         set_X(array2D,x,y)
 def manual_init(array2D):
+    set_O(array2D,2,5)
+    set_O(array2D,3,5)
     set_O(array2D,4,5)
-    set_O(array2D,5,5)
-    set_O(array2D,7,5)
-    set_X(array2D,3,5)
-    set_X(array2D,8,5)
+    set_X(array2D,5,5)
+    set_X(array2D,6,5)
   
 
 
@@ -57,6 +57,8 @@ def eva_attack(array2D,x,y):
                     Sum_h +=  dic.get((k-1,0))
                     cnt_h += k-1
                     stupid_h += 100
+                elif(array2D[x][y+k]=='J'): 
+                    stupid_h += k
                 else:
                     Sum_h += dic.get((k-1,1))
                     stupid_h += k-1   
@@ -68,6 +70,8 @@ def eva_attack(array2D,x,y):
                     Sum_h += dic.get((k-1,0))
                     cnt_h += k-1
                     stupid_h += 100
+                elif(array2D[x][y-k]=='J'): 
+                    stupid_h += k
                 else:
                     Sum_h += dic.get((k-1,1))
                     stupid_h += k-1 
@@ -85,6 +89,8 @@ def eva_attack(array2D,x,y):
                     Sum_a += dic.get((k-1,0))
                     cnt_a += k-1
                     stupid_a += 100
+                elif(array2D[x+k][y]=='J'): 
+                    stupid_a += k 
                 else:
                     Sum_a += dic.get((k-1,1)) 
                     stupid_a += k-1    
@@ -96,6 +102,8 @@ def eva_attack(array2D,x,y):
                     Sum_a += dic.get((k-1,0))
                     cnt_a += k-1
                     stupid_a += 100
+                elif(array2D[x-k][y]=='J'): 
+                    stupid_a += k 
                 else:
                     Sum_a += dic.get((k-1,1))
                     stupid_a += k-1 
@@ -112,6 +120,8 @@ def eva_attack(array2D,x,y):
                     ct_l += k-1 
                     Sum_l += dic.get((k-1,0))
                     stupid_l += 100
+                elif(array2D[x+k][y+k]=='J'):
+                    stupid_l += k
                 else:
                     Sum_l += dic.get((k-1,1)) 
                     stupid_l += k-1     
@@ -123,6 +133,8 @@ def eva_attack(array2D,x,y):
                     Sum_l += dic.get((k-1,0))
                     cnt_l += k-1
                     stupid_l += 100
+                elif(array2D[x-k][y-k]=='J'):
+                    stupid_l += k
                 else:
                     Sum_l += dic.get((k-1,1))
                     stupid_l += k-1 
@@ -140,6 +152,8 @@ def eva_attack(array2D,x,y):
                     Sum_r += dic.get((k-1,0))
                     cnt_r += k-1
                     stupid_r += 100
+                elif(array2D[x+k][y-k]=='J'):
+                    stupid_r += k  
                 else:
                     Sum_r += dic.get((k-1,1))  
                     stupid_r += k-1   
@@ -151,6 +165,8 @@ def eva_attack(array2D,x,y):
                     Sum_r += dic.get((k-1,0))
                     cnt_r += k-1
                     stupid_r += 100
+                elif(array2D[x-k][y+k]=='J'):
+                    stupid_r += k 
                 else:
                     Sum_r += dic.get((k-1,1))
                     stupid_r += k-1   
