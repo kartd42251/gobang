@@ -147,3 +147,11 @@ def ending_surprise(user):
         ending_turtle.hideturtle()
     ending_turtle.onclick(ending_clear)
 
+def comp_mouse_init(comp_m):
+    comp_m.speed(0)
+    comp_m.up()
+    comp_m.color("red")
+    comp_m.left(90)
+    
+def comp_mouse_move(comp_m,x,y):
+    comp_m.goto((-13.4+2*(x-1))*t_size, (14-2*(y-1))*t_size)  
