@@ -87,5 +87,5 @@ def turtle_win_rate():
     winning_turtle.up()
     winning_turtle.hideturtle()
     winning_turtle.speed(0)
-    winning_turtle.goto(310,100)
+    winning_turtle.goto(300,370)
     winning_turtle.write("WR:"+str(readWinRate()),font = ("Arial", 15, "normal"))

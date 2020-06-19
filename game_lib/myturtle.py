@@ -3,7 +3,8 @@ import random
 
 def turtle_init():
     turtle.right(90)
-    turtle.screensize(1500,1500)
+    turtle.setup(1200,1000)
+    turtle.screensize(3000,3000)
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)
     turtle.hideturtle()
@@ -95,24 +96,24 @@ def choice_character():
     def process(x,y):
         if(-290 <= x <= -110 ):
             img = IMG[0]
-            img.goto(-330,300)
+            img.goto(-370,0)
             IMG[1].hideturtle() 
             IMG[2].hideturtle() 
         elif(-90 <= x <= 90):
             img = IMG[1]
-            img.goto(-330,300)
+            img.goto(-370,0)
             IMG[0].hideturtle()
             IMG[2].hideturtle() 
         elif( 110 <= x <= 290 ):
             img = IMG[2]
-            img.goto(-330,300)
+            img.goto(-370,0)
             IMG[0].hideturtle()
             IMG[1].hideturtle() 
         jef = turtle.Turtle()
         jef.up()
         turtle.addshape("./img0.gif")
         jef.shape("./img0.gif")
-        jef.goto(330,300)
+        jef.goto(350,0)
         return
 
     IMG = [0]*3

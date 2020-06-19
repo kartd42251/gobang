@@ -3,6 +3,7 @@ import random
 
 def turtle_init():
     turtle.right(90)
+    turtle.setup(1200,1000)
     turtle.screensize(1500,1500)
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)
@@ -97,13 +98,13 @@ def choice_character():
     turtle.addshape("./img7.gif") 
     IMG.shape("./img7.gif")  
     IMG.up()
-    IMG.goto(-330,300)
+    IMG.goto(-370,0)
 
     IMG2 = turtle.Turtle()
     turtle.addshape("./img32.gif") 
     IMG2.shape("./img32.gif")  
     IMG2.up()
-    IMG2.goto(330,330)
+    IMG2.goto(370,0)
 def ending_surprise(user):
     turtle.addshape("./img33.gif") 
     turtle.addshape("./img34.gif") 
