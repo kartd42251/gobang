@@ -4,16 +4,13 @@ sys.path.insert(1, '../robot_lib')
 
 from myturtle import *
 from game_basic import *
-from robot_jim import *
+from robot_jeffrey import *
 import time
-
-
 
 x = 0
 y = 0
 x_temp = 8
 y_temp = 8
-
 
 def x_plus():
     global x_temp
@@ -76,7 +73,6 @@ def main():
     size = 17
     user = 1 # 1 for x -1 for y
     array2D = [['.' for _ in range(size)] for _ in range(size)]
-    wall (array2D,size)
     if_same_spot = -1
     #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
@@ -104,13 +100,8 @@ def main():
             writer.clear()
             if(user == 1):
                 turtle_check_win(size,"Jason",writer)
-                record(user)
             elif(user == -1):
                 turtle_check_win(size,"Jeffrey",writer)
-                record(user)
-               
-                
-                
         else:
             if(if_same_spot == 0 ):
                 user *= -1
@@ -121,4 +112,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-    

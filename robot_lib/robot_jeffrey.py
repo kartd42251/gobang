@@ -229,7 +229,7 @@ def eva_defence(array2D,x,y):
                 if(ct_r>=4):
                     Sum_r = dic.get((4,1))
                 elif(cnt_r==3):
-                    Sum_r = dic.get((4,1))
+                    Sum_r = dic.get((3,0))
                 break
         
         return int(Sum_h + Sum_a +Sum_l +Sum_r)

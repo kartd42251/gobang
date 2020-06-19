@@ -94,8 +94,8 @@ def choice_character():
     
     for i in range(3):
         IMG[i] = turtle.Turtle()
-        turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img"+str(i+2)+".gif") 
-        IMG[i].shape("/Users/Elaine/Desktop/gobang/game_src/img"+str(i+2)+".gif")  
+        turtle.addshape("./img"+str(i+2)+".gif") 
+        IMG[i].shape("./img"+str(i+2)+".gif")  
 
         IMG[i].up()
         IMG[i].goto(200*(i-1),0)
@@ -117,8 +117,8 @@ def choice_character():
                 IMG[1].hideturtle() 
             jef = turtle.Turtle()
             jef.up()
-            turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img0.gif")
-            jef.shape("/Users/Elaine/Desktop/gobang/game_src/img0.gif")
+            turtle.addshape("./img0.gif")
+            jef.shape("./img0.gif")
             jef.goto(330,300)
             return
         IMG[i].onclick(process)
