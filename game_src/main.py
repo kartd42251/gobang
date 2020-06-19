@@ -62,11 +62,13 @@ def main():
     
     writer = turtle.Turtle()
     arrow = turtle.Turtle()
+    comp_m = turtle.Turtle()
 
     turtle_init() 
     arrow_init(arrow)
     writer_init(writer)
     file_init()
+    comp_mouse_init(comp_m)
 
     turtle_gamefield()
     turtle_win_rate()
@@ -103,6 +105,7 @@ def main():
         if(mode == 1 and user == -1 and y > 0):
             y, x = eva3(array2D,size)
             set_O(array2D, y, x)    
+            comp_mouse_move(comp_m,x,y)
         
         if(check_win(array2D, size) == 1):
             shutdown = 1

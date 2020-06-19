@@ -27,10 +27,10 @@ def eva3(array2D,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
                 eva_result[i][j] =  max(eva_defence(array2D,i,j),eva_attack(array2D,i,j))
-    for i in range(0,size):
-        for j in range(0,size):
-            print("{0:^3d}".format(eva_result[i][j]), end = "")
-        print()
+    # for i in range(0,size):
+    #     for j in range(0,size):
+    #         print("{0:^3d}".format(eva_result[i][j]), end = "")
+    #     print()
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
