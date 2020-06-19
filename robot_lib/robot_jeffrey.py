@@ -9,13 +9,13 @@ def random_init(array2D):
         y = random.randint(1,15)
         set_X(array2D,x,y)
 def manual_init(array2D):
-    set_O(array2D,4,5)
-    set_O(array2D,5,5)
-    set_O(array2D,7,5)
+    set_X(array2D,2,5)
     set_X(array2D,3,5)
-    set_X(array2D,8,5)
+    set_X(array2D,4,5)
+    set_X(array2D,5,5)
+    set_O(array2D,6,5)
+    
   
-
 
 def eva3(array2D,size): 
     eva_result = [[0 for _ in range(size)] for _ in range(size)]
@@ -26,10 +26,10 @@ def eva3(array2D,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
                 eva_result[i][j] =  max(eva_defence(array2D,i,j),eva_attack(array2D,i,j))
-    # for i in range(0,size):
-    #     for j in range(0,size):
-    #         print("{0:^3d}".format(eva_result[i][j]), end = "")
-    #     print()
+    for i in range(0,size):
+        for j in range(0,size):
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
+        print()
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
