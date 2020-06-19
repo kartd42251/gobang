@@ -4,7 +4,7 @@ sys.path.insert(1, '../robot_lib')
 
 from myturtle import *
 from game_basic import *
-from robot_jim import *
+from robot_jeffrey import *
 import time
 
 x = 0
@@ -77,6 +77,7 @@ def main():
         array2D[16][i]='J'
         array2D[i][0]='J'
         array2D[i][16]='J'
+
     if_same_spot = -1
     #manual_init(array2D)
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
@@ -118,4 +119,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-    

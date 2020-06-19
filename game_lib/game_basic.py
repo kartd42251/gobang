@@ -2,7 +2,12 @@ import platform
 import os
 from myturtle import *
 
-
+def wall(array2D,size):
+    for i in range (size):
+        array2D[0][i]='J'
+        array2D[16][i]='J'
+        array2D[i][0]='J'
+        array2D[i][16]='J'
 def set_X(array2D,x, y):
     if(array2D[x][y] == ('X'or'Y')):
         return 1
@@ -46,4 +51,22 @@ def check_win(array2D,size):
 
 
 
-    
+def record(user):
+    f = open("record.txt","r")
+    line = f.readline()  
+    win = int(line.split(" ")[0])
+    lose = int(line.split(" ")[1])
+    rate = int(line.split(" ")[2])
+    f.close
+    if(user == -1):
+        lose +=1
+    else:
+        win += 1
+    rate = win/(lose + win)
+    f = open("record.txt","w")
+    f.write(str(win))
+    f.write(' ')
+    f.write(str(lose))
+    f.write(' ')
+    f.write(str(int(rate)))
+    f.close                            
