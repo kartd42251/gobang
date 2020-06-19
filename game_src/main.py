@@ -93,7 +93,7 @@ def main():
     if(first_hand == 'n'):
         set_O(array2D,8,8)
     key_detect(turtle)
-    #choice_character()
+    choice_character()
     while(not shutdown):
         arrow.goto((-13.4+2*(x_temp-1))*t_size, (14-2*(y_temp-1))*t_size)  
         turtle.update()
@@ -121,10 +121,10 @@ def main():
                 user *= -1
                 status(writer,user)
 
-    
     turtle.done()
     if(mode == 1):
         recordTotal()    
         print("WINNING RATE:",readWinRate())
+
 if __name__ == "__main__":
     main()
