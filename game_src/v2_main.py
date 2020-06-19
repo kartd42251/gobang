@@ -109,6 +109,7 @@ def main():
             elif(user == -1):
                 turtle_check_win(size,"Comp",writer)
             ending_surprise(user)
+
         else:
             if(if_same_spot == 0 ):
                 user *= -1

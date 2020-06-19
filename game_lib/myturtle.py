@@ -1,5 +1,6 @@
 import turtle
 import random
+
 def turtle_init():
     turtle.right(90)
     turtle.screensize(1500,1500)
@@ -89,6 +90,7 @@ def status(writer,user):
         if(user == -1):
             writer.write("now is Jeffery's turn", align="center", font=("Arial", 20, "normal"))
         last_user = user
+
 def choice_character():
     def process(x,y):
         if(-290 <= x <= -110 ):
@@ -116,18 +118,14 @@ def choice_character():
     IMG = [0]*3
     randList = [2,3,4,5,6,7,8,9,10]
     rand_index = random.sample(randList,3)       
-    print(rand_index)
 
     for i in range(3):
         
         IMG[i] = turtle.Turtle()
-
         turtle.addshape("./img"+str(rand_index[i])+".gif") 
         IMG[i].shape("./img"+str(rand_index[i])+".gif")  
-
         IMG[i].up()
         IMG[i].goto(200*(i-1),0)
-
         IMG[i].onclick(process)
 
 
@@ -142,7 +140,6 @@ def ending_surprise(user):
     if(user == 1):
         ending_turtle.shape("./img21.gif")
         ending_writer.write("你就棒", align="center", font=("Arial", 50, "normal"))
-
     elif(user == -1):
         ending_turtle.shape("./img22.gif")
         ending_writer.write("吳隆傑又在使", align="center", font=("Arial", 50, "normal"))

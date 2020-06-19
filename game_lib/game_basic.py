@@ -49,24 +49,3 @@ def check_win(array2D,size):
                array2D[i][j+4] == array2D[i+2][j+2] == array2D[i+3][j+1] == array2D[i+4][j] == array2D[i+1][j+3] == 'O'):
                 return 1
 
-
-
-def record(user):
-    f = open("record.txt","r")
-    line = f.readline()  
-    win = int(line.split(" ")[0])
-    lose = int(line.split(" ")[1])
-    rate = int(line.split(" ")[2])
-    f.close
-    if(user == -1):
-        lose +=1
-    else:
-        win += 1
-    rate = win/(lose + win)
-    f = open("record.txt","w")
-    f.write(str(win))
-    f.write(' ')
-    f.write(str(lose))
-    f.write(' ')
-    f.write(str(int(rate)))
-    f.close                            
