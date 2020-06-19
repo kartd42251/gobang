@@ -68,6 +68,7 @@ def main():
     writer_init(writer)
 
     turtle_gamefield()
+    turtle_win_rate()
     shutdown = 0
     size = 17
     user = 1 # 1 for x -1 for y
