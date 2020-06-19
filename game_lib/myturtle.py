@@ -130,19 +130,22 @@ def choice_character():
 
         IMG[i].onclick(process)
 
-    
+
 def ending_surprise(user):
-    turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img21.gif") 
-    turtle.addshape("/Users/Elaine/Desktop/gobang/game_src/img22.gif") 
+    turtle.addshape("./img21.gif") 
+    turtle.addshape("./img22.gif") 
     ending_turtle = turtle.Turtle()
     ending_writer = turtle.Turtle()
     ending_writer.up()
     ending_writer.hideturtle()
     ending_writer.goto(0,-370)
     if(user == 1):
-        ending_turtle.shape("/Users/Elaine/Desktop/gobang/game_src/img21.gif")
+        ending_turtle.shape("./img21.gif")
         ending_writer.write("你就棒", align="center", font=("Arial", 50, "normal"))
 
     elif(user == -1):
-        ending_turtle.shape("/Users/Elaine/Desktop/gobang/game_src/img22.gif")
+        ending_turtle.shape("./img22.gif")
         ending_writer.write("吳隆傑又在使", align="center", font=("Arial", 50, "normal"))
+    def ending_clear(x,y):
+        ending_turtle.hideturtle()
+    ending_turtle.onclick(ending_clear)
