@@ -121,10 +121,10 @@ def main():
                 user *= -1
                 status(writer,user)
 
-    
     turtle.done()
     if(mode == 1):
         recordTotal()    
         print("WINNING RATE:",readWinRate())
+
 if __name__ == "__main__":
     main()
