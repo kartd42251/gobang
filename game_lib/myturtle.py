@@ -130,7 +130,7 @@ def choice_character():
 
         IMG[i].onclick(process)
 
-    
+
 def ending_surprise(user):
     turtle.addshape("./img21.gif") 
     turtle.addshape("./img22.gif") 
@@ -146,3 +146,6 @@ def ending_surprise(user):
     elif(user == -1):
         ending_turtle.shape("./img22.gif")
         ending_writer.write("吳隆傑又在使", align="center", font=("Arial", 50, "normal"))
+    def ending_clear(x,y):
+        ending_turtle.hideturtle()
+    ending_turtle.onclick(ending_clear)
