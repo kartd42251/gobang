@@ -1,7 +1,7 @@
 import random 
 from game_basic import *
-dic = {(4,0):100,(4,1):100,(3,0):70,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
-dic2 = {(4,0):200,(4,1):150,(3,0):70,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
+dic = {(4,0):100,(4,1):100,(3,0):70,(3,1):4,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
+dic2 = {(4,0):200,(4,1):150,(3,0):70,(3,1):4,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
 
 def random_init(array2D):
     for i in range(30):
@@ -243,6 +243,7 @@ def eva_attack(array2D,x,y):
     ct_h = ct_a = ct_l = ct_r = 0
     cnt_h = cnt_a = cnt_l =cnt_r = 0
     
+    
     if(x<16 and x>0 and y<16 and y>0):
         for k in range(1,6):
             if(array2D[x][y+k]!='O'):
@@ -329,7 +330,7 @@ def eva_attack(array2D,x,y):
                 if(ct_r>=4):
                     Sum_r = dic2.get((4,1))
                 elif(cnt_r==3):
-                    Sum_r = dic2.get((4,1))
+                    Sum_r = dic2.get((3,0))
                 break
         
         return int(Sum_h + Sum_a +Sum_l +Sum_r)
