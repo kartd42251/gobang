@@ -146,3 +146,4 @@ def ending_surprise(user):
     def ending_clear(x,y):
         ending_turtle.hideturtle()
     ending_turtle.onclick(ending_clear)
+
