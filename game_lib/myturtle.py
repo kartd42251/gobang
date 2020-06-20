@@ -3,8 +3,7 @@ import random
 
 def turtle_init():
     turtle.right(90)
-    turtle.setup(800,600)
-    turtle.screensize(3000,3000)
+    turtle.setup(800,800)
     turtle.setworldcoordinates(-400,-400,400,400)
     turtle.width(3)
     turtle.hideturtle()
