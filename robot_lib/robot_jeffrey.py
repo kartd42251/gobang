@@ -1,10 +1,9 @@
 import random 
 from game_basic import *
 
-dic = {(4,0):100,(4,1):120,(3,0):70,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
-dic2 = {(4,0):200,(4,1):150,(3,0):90,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
+dic2 = {(4,0):250,(4,1):150,(3,0):90,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
 direction = {0:(1,0),1:(0,1),2:(1,1),3:(1,-1)}
-Sum = [0,0,0,0]
+
 
 
 def random_init(array2D):
@@ -44,13 +43,9 @@ def eva3(array2D,size):
                 _max = eva_result[i][j]
                 random_max=[]
                 random_max.append([i,j])
-                print(random_max)
             elif(eva_result[i][j] ==_max):
                 random_max.append([i,j])
-    li =random_max[random.randint(0,len(random_max)-1)]
-    print(li)
-    print(random_max)
-    
+    li =random_max[random.randint(0,len(random_max)-1)]  
     # print("best move (",i_max,",",j_max,")")
     
     return li[0],li[1]
@@ -134,8 +129,8 @@ def score (array2D,x,y):
                             foolproof[i] += j-1   
                         if(four_in_one [i]>=4):
                             Sum[i] = dic2.get((4,0))
-                        elif(i == 1 or 3):
-                            if(double_triple[i] + double_triple[i-1]>=4):
+                        elif(double_triple[i] + double_triple[i-1]>=4):
+                            if(i == 3 or i == 1):
                                 Sum[i] = dic2.get((3,0))
                         elif(three_in_one[i]==3):
                             Sum[i] = dic2.get((3,0))
@@ -144,9 +139,10 @@ def score (array2D,x,y):
                         break
 
             score[k] = int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
+            print(Sum[0:4])
         return max(score[0],score[1])   
     else:
-        return 0
+        return -1
 
 
 
