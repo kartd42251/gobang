@@ -61,62 +61,67 @@ def main():
     mode = -1 # 0 for pvp, 1 for pvc
     
     writer = turtle.Turtle()
-    arrow = turtle.Turtle()
-    comp_m = turtle.Turtle()
+    user_arrow = turtle.Turtle()
+    comp_arrow = turtle.Turtle()
 
     turtle_init() 
-    arrow_init(arrow)
     writer_init(writer)
     file_init()
-    comp_mouse_init(comp_m)
+    comp_mouse_init(comp_arrow)
+    arrow_init(user_arrow)
 
     turtle_gamefield()
     turtle_win_rate()
+
     shutdown = 0
     size = 17
     user = 1 # 1 for x -1 for y
     array2D = [['.' for _ in range(size)] for _ in range(size)]
-    for i in range (size):
-        array2D[0][i]='J'
-        array2D[16][i]='J'
-        array2D[i][0]='J'
-        array2D[i][16]='J'
-
+    wall(array2D,size)
     if_same_spot = -1
     #manual_init(array2D)
+    first_hand = 'NA'
+
     mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",2,0,2))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
-    if(mode == 0 or mode == 2):
-        first_hand = 'n'
+    if(mode == 2 ):
+        first_hand = 'y'
+    
     if(first_hand == 'n'):
         set_O(array2D,8,8)
         
     key_detect(turtle)
     choice_character()
+    
     while(not shutdown):
-        arrow.goto((-13.4+2*(x_temp-1))*t_size, (14-2*(y_temp-1))*t_size)  
         turtle.update()
-        global x, y
-        if(mode != 2 and user == 1 and x > 0):
-            if_same_spot = set_X(array2D, y, x)
-        if(mode == 0 and user == -1 and y > 0):
-            if_same_spot = set_O(array2D, y, x)
-        if(mode == 1 and user == -1 and y > 0):
-            y, x = eva3(array2D,size)
-            set_O(array2D, y, x)    
-            comp_mouse_move(comp_m,x,y)
+        global x, y, temp_x, temp_y
 
-        if(mode == 2):
-            if(user == 1 and y > 0):
+        if(mode == 0):
+            if(user == 1):
+                if_same_spot = set_X(array2D, y, x)
+                mouse_move(user_arrow,x_temp,y_temp) 
+            if(user == -1):
+                if_same_spot = set_O(array2D, y, x)
+                mouse_move(comp_arrow,x_temp,y_temp) 
+        if(mode == 1):
+            if(user == 1 ):
+                mouse_move(user_arrow,x_temp,y_temp)
+                if_same_spot = set_X(array2D, y, x)
+            if(user == -1):
                 y, x = eva3(array2D,size)
                 set_O(array2D, y, x)    
-                comp_mouse_move(comp_m,x,y) 
-            if(user == -1 and y > 0):
+                mouse_move(comp_arrow,x,y)
+        if(mode == 2):
+            if(user == 1):
                 y, x = eva3(array2D,size)
-                set_X(array2D, y, x)    
-                comp_mouse_move(comp_m,x,y)  
-            if_same_spot = 0
+                if_same_spot = set_O(array2D, y, x) 
+                mouse_move(user_arrow,x,y)
+            if(user == -1):
+                y, x = eva3(array2D,size)
+                if_same_spot = set_X(array2D, y, x)    
+                mouse_move(comp_arrow,x,y)  
 
         if(check_win(array2D, size) == 1):
             shutdown = 1

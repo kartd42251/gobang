@@ -70,6 +70,7 @@ def turtle_check_win(size,str,writer):
 #arrow
 def arrow_init(arrow):
     arrow.up()
+    arrow.speed(0)
     arrow.left(90)
 
 #writer
@@ -153,5 +154,6 @@ def comp_mouse_init(comp_m):
     comp_m.color("red")
     comp_m.left(90)
     
-def comp_mouse_move(comp_m,x,y):
-    comp_m.goto((-13.4+2*(x-1))*t_size, (14-2*(y-1))*t_size)  
+def mouse_move(mouse,x,y):
+    mouse.goto((-13.4+2*(x-1))*t_size, (14-2*(y-1))*t_size)  
+
