@@ -84,21 +84,21 @@ def main():
 
     if_same_spot = -1
     #manual_init(array2D)
-    mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",1,0,1))
+    mode = int(turtle.numinput("Choose Mode","0 for pvp and 1 for pvc",2,0,2))
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
-    if(mode == 0):
+    if(mode == 0 or mode == 2):
         first_hand = 'n'
-
     if(first_hand == 'n'):
         set_O(array2D,8,8)
+        
     key_detect(turtle)
     choice_character()
     while(not shutdown):
         arrow.goto((-13.4+2*(x_temp-1))*t_size, (14-2*(y_temp-1))*t_size)  
         turtle.update()
         global x, y
-        if(user == 1 and x > 0):
+        if(mode != 2 and user == 1 and x > 0):
             if_same_spot = set_X(array2D, y, x)
         if(mode == 0 and user == -1 and y > 0):
             if_same_spot = set_O(array2D, y, x)
@@ -106,7 +106,18 @@ def main():
             y, x = eva3(array2D,size)
             set_O(array2D, y, x)    
             comp_mouse_move(comp_m,x,y)
-        
+
+        if(mode == 2):
+            if(user == 1 and y > 0):
+                y, x = eva3(array2D,size)
+                set_O(array2D, y, x)    
+                comp_mouse_move(comp_m,x,y) 
+            if(user == -1 and y > 0):
+                y, x = eva3(array2D,size)
+                set_X(array2D, y, x)    
+                comp_mouse_move(comp_m,x,y)  
+            if_same_spot = 0
+
         if(check_win(array2D, size) == 1):
             shutdown = 1
             writer.clear()

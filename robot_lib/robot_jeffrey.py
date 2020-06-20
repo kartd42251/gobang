@@ -35,6 +35,9 @@ def eva3(array2D,size):
         for j in range(0,size):
             print("{0:^3d}".format(eva_result[i][j]), end = "")
         print()
+    print()
+    print()
+   
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
@@ -52,6 +55,39 @@ def eva3(array2D,size):
     
     return li[0],li[1]
 
+
+    return i_max,j_max
+def check_if_need_rand(eva_result,size):
+    _max = 0
+    for i in range(0,size):
+        for j in range(0,size):
+            if(eva_result[i][j] > _max):
+                _max = eva_result[i][j]
+    def elem_cnt(eva_result,size,target):
+        cnt = 0
+        for i in range(0,size):
+            for j in range(0,size): 
+                if(eva_result[i][j] == target):
+                    cnt += 1
+        return cnt
+    if(elem_cnt(eva_result,size,0)== size**2):
+        return True,0
+    elif(elem_cnt(eva_result,size,_max)+elem_cnt(eva_result,size,0)==size**2):
+        return True,_max
+
+def set_random(array2D,size,target):
+    ilist = []
+    jlist = []
+    print(target)
+    for i in range(size):
+        for j in range(size):
+            if(array2D[i][j] == target):
+                ilist.append(i)
+                jlist.append(j)
+    print("HERE",array2D,ilist,jlist)
+    randindex = random.randint(0,len(ilist)-1)       
+    x, y= ilist[randindex],jlist[randindex]
+    return x,y
 
 def score (array2D,x,y):
     if(x<16 and x>0 and y<16 and y>0):
@@ -106,6 +142,7 @@ def score (array2D,x,y):
                         if(foolproof[i] <4):
                             Sum[i] = 0  
                         break
+
             score[k] = int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
         return max(score[0],score[1])   
     else:

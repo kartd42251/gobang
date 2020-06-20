@@ -8,6 +8,7 @@ def wall(array2D,size):
         array2D[16][i]='J'
         array2D[i][0]='J'
         array2D[i][16]='J'
+
 def set_X(array2D,x, y):
     if(array2D[x][y] == ('X'or'Y')):
         return 1
@@ -16,7 +17,6 @@ def set_X(array2D,x, y):
         turtle_set_X(y, x)
         return 0    
             
-      
 def set_O(array2D,x, y):
     if(array2D[x][y] == ('X'or'Y')):
         return 1
@@ -26,7 +26,6 @@ def set_O(array2D,x, y):
         turtle_set_O(y, x)
         return 0
         
-
 def check_win(array2D,size):
     for i in range(0, size):
         for j in range(0, size-4):
