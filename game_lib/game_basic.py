@@ -69,12 +69,12 @@ def readWinRate():
     for ch in line:
         if(ch == '*'):
             win += 1
-        elif(ch == '@'):
+        elif(ch == 'n'):
             total += 1
     if(total == 0):
         return "NA"   
     else:
-        return win/total
+        return win,total,win/total
 
 def file_init():
     fn = "./recorder.txt"
@@ -86,5 +86,11 @@ def turtle_win_rate():
     winning_turtle.up()
     winning_turtle.hideturtle()
     winning_turtle.speed(0)
+    win, total, WR = readWinRate()
+
     winning_turtle.goto(300,370)
-    winning_turtle.write("WR:"+str(readWinRate()),font = ("Arial", 15, "normal"))
+    winning_turtle.write("Win:"+str(win),font = ("Arial", 15, "normal"))
+    winning_turtle.goto(300,350)
+    winning_turtle.write("Total:"+str(total),font = ("Arial", 15, "normal"))
+    winning_turtle.goto(300,329)
+    winning_turtle.write("WR:"+str(int(100000*WR)/1000)+"%",font = ("Arial", 15, "normal"))
