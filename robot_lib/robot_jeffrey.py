@@ -1,4 +1,5 @@
 import random 
+import copy
 from game_basic import *
 
 dic2 = {(4,0):250,(4,1):150,(3,0):90,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
@@ -13,16 +14,16 @@ def random_init(array2D):
         set_X(array2D,x,y)
 def manual_init(array2D):
 
-    set_O(array2D,2,5)
-    set_O(array2D,3,5)
-    set_O(array2D,4,5)
-    set_O(array2D,5,5)
-    set_X(array2D,6,5)
+  
+    set_O(array2D,6,14)
+    set_O(array2D,7,13)
+    set_O(array2D,4,14)
+    set_X(array2D,8,12)
 
   
 
 def eva3(array2D,size): 
-    eva_result = [[0 for _ in range(size)] for _ in range(size)]
+    eva_result = [[-1 for _ in range(size)] for _ in range(size)]
     _max = -1
     random_max=[]
     li =[]
@@ -126,10 +127,55 @@ def score (array2D,x,y):
                         break
 
             score[k] = int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
-            print(Sum[0:4])
         return max(score[0],score[1])   
     else:
         return -1
+
+def fake_self_learing(array2D,size):
+    eva_result = [[-1 for _ in range(size)] for _ in range(size)]
+    eva_result_2 =copy.deepcopy(eva_result)
+    _min = -1
+    min_x = 0
+    min_y = 0
+    for i in range(0,size):
+        for j in range(0,size):
+            if(array2D[i][j] == '.'):
+                eva_result[i][j] = score(array2D,i,j)
+    for i in range(0,size):
+        for j in range(0,size):
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
+        print()
+    print()
+    print()
+    for k in range(0,size):
+        for l in range(0,size):
+            if(eva_result[k][l] >0):
+                print(k,l)
+                array2D_2 = copy.deepcopy(array2D)
+                array2D_2[k][l] = "O"
+                _max = -1
+                for i in range(0,size):
+                    for j in range(0,size):
+                        if(array2D_2[i][j] == '.'):
+                            eva_result_2[i][j] = score(array2D_2,i,j)
+                            if(eva_result_2[i][j] > _max):
+                                _max = eva_result[i][j]
+                if(eva_result[k][l] - _max > _min):
+                    _min = eva_result[k][l]
+                    print(_min)
+                    min_x = k
+                    min_y = l
+    for i in range(0,size):
+        for j in range(0,size):
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
+        print()
+    print()
+    print(min_x,min_y)
+    return min_x,min_y
+
+                    
+     
+  
 
 
 
