@@ -44,12 +44,12 @@ def eva3(array2D,size):
                 _max = eva_result[i][j]
                 random_max=[]
                 random_max.append([i,j])
-                print(random_max)
+                #print(random_max)
             elif(eva_result[i][j] ==_max):
                 random_max.append([i,j])
     li =random_max[random.randint(0,len(random_max)-1)]
-    print(li)
-    print(random_max)
+    # print(li)
+    # print(random_max)
     
     print("best move (",li[0]," ",li[1],")")
     
@@ -72,20 +72,6 @@ def check_if_need_rand(eva_result,size):
         return True,0
     elif(elem_cnt(eva_result,size,_max)+elem_cnt(eva_result,size,0)==size**2):
         return True,_max
-
-def set_random(array2D,size,target):
-    ilist = []
-    jlist = []
-    print(target)
-    for i in range(size):
-        for j in range(size):
-            if(array2D[i][j] == target):
-                ilist.append(i)
-                jlist.append(j)
-    print("HERE",array2D,ilist,jlist)
-    randindex = random.randint(0,len(ilist)-1)       
-    x, y= ilist[randindex],jlist[randindex]
-    return x,y
 
 def score (array2D,x,y):
     if(x<16 and x>0 and y<16 and y>0):

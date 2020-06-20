@@ -86,14 +86,14 @@ def main():
     if(mode == 1):
         first_hand = turtle.textinput("First hand?","First hand?(y/n)")
     if(mode == 2 ):
-        first_hand = 'y'
+        first_hand = 'n'
     
     if(first_hand == 'n'):
         set_O(array2D,8,8)
         
     key_detect(turtle)
-    choice_character()
-    
+    #choice_character()
+
     while(not shutdown):
         turtle.update()
         global x, y, temp_x, temp_y
@@ -116,11 +116,11 @@ def main():
         if(mode == 2):
             if(user == 1):
                 y, x = eva3(array2D,size)
-                if_same_spot = set_O(array2D, y, x) 
+                if_same_spot = set_X(array2D, y, x) 
                 mouse_move(user_arrow,x,y)
             if(user == -1):
                 y, x = eva3(array2D,size)
-                if_same_spot = set_X(array2D, y, x)    
+                if_same_spot = set_O(array2D, y, x)    
                 mouse_move(comp_arrow,x,y)  
 
         if(check_win(array2D, size) == 1):
@@ -131,7 +131,7 @@ def main():
                 recordWin()
             elif(user == -1):
                 turtle_check_win(size,"Comp",writer)
-            ending_surprise(user)
+            #ending_surprise(user)
         else:
             if(if_same_spot == 0 ):
                 user *= -1
