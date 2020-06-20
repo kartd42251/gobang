@@ -44,11 +44,11 @@ def eva3(array2D,size):
                 _max = eva_result[i][j]
                 i_max = i
                 j_max = j
-    if(check_if_need_rand(eva_result,size)[0] == True):
-        print("INININININ")
-        target = check_if_need_rand(eva_result,size)[1]
-        i_max,j_max = set_random(array2D,size,target)
-    print("best move (",i_max,",",j_max,")")
+    # if(check_if_need_rand(eva_result,size)[0] == True):
+    #     print("INININININ")
+    #     target = check_if_need_rand(eva_result,size)[1]
+    #     i_max,j_max = set_random(array2D,size,target)
+    # print("best move (",i_max,",",j_max,")")
 
     return i_max,j_max
 def check_if_need_rand(eva_result,size):
