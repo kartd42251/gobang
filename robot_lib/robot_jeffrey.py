@@ -25,8 +25,8 @@ def manual_init(array2D):
 def eva3(array2D,size): 
     eva_result = [[0 for _ in range(size)] for _ in range(size)]
     _max = -1
-    i_max = -1
-    j_max = -1
+    random_max=[]
+    li =[]
     for i in range(0,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
@@ -39,22 +39,29 @@ def eva3(array2D,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
                 _max = eva_result[i][j]
-                i_max = i
-                j_max = j
+                random_max=[]
+                random_max.append([i,j])
+                print(random_max)
+            elif(eva_result[i][j] ==_max):
+                random_max.append([i,j])
+    li =random_max[random.randint(0,len(random_max)-1)]
+    print(li)
+    print(random_max)
+    
     # print("best move (",i_max,",",j_max,")")
     
-    return i_max,j_max
+    return li[0],li[1]
 
 
 def score (array2D,x,y):
-    Sum = [0,0,0,0]
-    four_in_one = [0,0,0,0]
-    three_in_one = [0,0,0,0]
-    foolproof = [0,0,0,0]
-    double_triple =[0,0,0,0]
-    score = [0,0]
     if(x<16 and x>0 and y<16 and y>0):
+        score = [0,0]
         for k in range(2):
+            Sum = [0,0,0,0]
+            four_in_one = [0,0,0,0]
+            three_in_one = [0,0,0,0]
+            foolproof = [0,0,0,0]
+            double_triple =[0,0,0,0]
             if(k == 0):
                 symbol = "X"
             else:
@@ -90,17 +97,17 @@ def score (array2D,x,y):
                             Sum[i] += dic2.get((j-1,1))
                             foolproof[i] += j-1   
                         if(four_in_one [i]>=4):
-                            Sum[i] = dic2.get((4,1))
+                            Sum[i] = dic2.get((4,0))
                         elif(i == 1 or 3):
                             if(double_triple[i] + double_triple[i-1]>=4):
-                                Sum[i] += dic2.get((3,0))
+                                Sum[i] = dic2.get((3,0))
                         elif(three_in_one[i]==3):
                             Sum[i] = dic2.get((3,0))
                         if(foolproof[i] <4):
                             Sum[i] = 0  
                         break
             score[k] = int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
-        return max(score[0],score[1])     
+        return max(score[0],score[1])   
     else:
         return 0
 
