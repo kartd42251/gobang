@@ -1,7 +1,11 @@
 import random 
 from game_basic import *
+
 dic = {(4,0):100,(4,1):120,(3,0):70,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
 dic2 = {(4,0):200,(4,1):150,(3,0):90,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
+direction = {0:(1,0),1:(0,1),2:(1,1),3:(1,-1)}
+Sum = [0,0,0,0]
+
 
 def random_init(array2D):
     for i in range(30):
@@ -26,7 +30,7 @@ def eva3(array2D,size):
     for i in range(0,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
-                eva_result[i][j] =  max(eva_defence(array2D,i,j),eva_attack(array2D,i,j))
+                eva_result[i][j] =  max(defence(array2D,i,j),Attack(array2D,i,j))
     for i in range(0,size):
         for j in range(0,size):
             print("{0:^3d}".format(eva_result[i][j]), end = "")
@@ -40,6 +44,102 @@ def eva3(array2D,size):
     # print("best move (",i_max,",",j_max,")")
     
     return i_max,j_max
+
+def Attack (array2D,x,y):
+    Sum = [0,0,0,0]
+    four_in_one = [0,0,0,0]
+    three_in_one = [0,0,0,0]
+    foolproof = [0,0,0,0]
+    if(x<16 and x>0 and y<16 and y>0):
+        for i in range(4):
+                for j in range(1,6):
+                    (v_x,v_y) = direction.get(i)
+                    (v_x2,v_y2) = (-v_x,-v_y)
+                    if(array2D[x+j*v_x][y+j*v_y] !='O'):
+                        four_in_one [i] += j-1
+                        if(array2D[x+j*v_x][y+j*v_y]=='.'): 
+                            Sum[i] +=  dic2.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                        elif(array2D[x+j*v_x][y+j*v_y]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic2.get((j-1,1))
+                            foolproof[i] += j-1
+                        break
+                for j in range(1,6):   
+                    if(array2D[x+j*v_x2][y+j*v_y2] !='O'):
+                        four_in_one[i] += j-1
+                        if(array2D[x+j*v_x][y+j*v_y]=='.'): 
+                            Sum[i] +=  dic2.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                        elif(array2D[x+j*v_x][y+j*v_y]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic2.get((j-1,1))
+                            foolproof[i] += j-1   
+                        if(four_in_one [i]>=4):
+                            Sum[i] = dic2.get((4,1))
+                        elif(three_in_one[i]==3):
+                            Sum[i] = dic2.get((3,0))
+                        if(foolproof[i] <4):
+                            Sum[i] = 0
+                        break
+            return int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
+    else:
+        return 0
+def Defense (array2D,x,y):
+    Sum = [0,0,0,0]
+    four_in_one = [0,0,0,0]
+    three_in_one = [0,0,0,0]
+    foolproof = [0,0,0,0]
+    if(x<16 and x>0 and y<16 and y>0):
+        for i in range(4):
+                for j in range(1,6):
+                    (v_x,v_y) = direction.get(i)
+                    (v_x2,v_y2) = (-v_x,-v_y)
+                    if(array2D[x+j*v_x][y+j*v_y] !='X'):
+                        four_in_one [i] += j-1
+                        if(array2D[x+j*v_x][y+j*v_y]=='.'): 
+                            Sum[i] +=  dic2.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                        elif(array2D[x+j*v_x][y+j*v_y]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic2.get((j-1,1))
+                            foolproof[i] += j-1
+                        break
+                for j in range(1,6):   
+                    if(array2D[x+j*v_x2][y+j*v_y2] !='X'):
+                        four_in_one[i] += j-1
+                        if(array2D[x+j*v_x][y+j*v_y]=='.'): 
+                            Sum[i] +=  dic2.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                        elif(array2D[x+j*v_x][y+j*v_y]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic2.get((j-1,1))
+                            foolproof[i] += j-1   
+                        if(four_in_one [i]>=4):
+                            Sum[i] = dic2.get((4,1))
+                        elif(three_in_one[i]==3):
+                            Sum[i] = dic2.get((3,0))
+                        if(foolproof[i] <4):
+                            Sum[i] = 0
+                        break
+            return int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
+    else:
+        return 0
+
+
+
+
+
+
+
 
 def eva_attack(array2D,x,y):
     Sum_h = 0
@@ -80,7 +180,7 @@ def eva_attack(array2D,x,y):
                     Sum_h = dic2.get((4,1))
                 elif(cnt_h==3):
                     Sum_h = dic2.get((3,0))
-                if(stupid_h <5):
+                if(stupid_h <4):
                     Sum_h = 0
                 break
         for k in range(1,6):
@@ -112,7 +212,7 @@ def eva_attack(array2D,x,y):
                     Sum_a = dic2.get((4,1)) 
                 elif(cnt_a==3):
                     Sum_a = dic2.get((3,0))    
-                if(stupid_a<5):
+                if(stupid_a<4):
                     Sum_a = 0  
                 break
         for k in range(1,6):        
@@ -143,7 +243,7 @@ def eva_attack(array2D,x,y):
                     Sum_l = dic2.get((4,1))   
                 elif(cnt_l==3):
                     Sum_l = dic2.get((3,0)) 
-                if(stupid_l<5):
+                if(stupid_l<4):
                     Sum_l = 0 
                 break
         for k in range(1,6):        
@@ -175,7 +275,7 @@ def eva_attack(array2D,x,y):
                     Sum_r = dic2.get((4,1))
                 elif(cnt_r==3):
                     Sum_r = dic2.get((3,0))
-                    if(stupid_r<5):
+                    if(stupid_r<4):
                         Sum_r = 0
                 break
         
@@ -221,7 +321,7 @@ def eva_defence(array2D,x,y):
                     Sum_h = dic.get((4,1))
                 elif(cnt_h==3):
                     Sum_h = dic.get((3,0))
-                if(stupid_h <5):
+                if(stupid_h <4):
                     Sum_h = 0
                 break
         for k in range(1,6):
@@ -253,7 +353,7 @@ def eva_defence(array2D,x,y):
                     Sum_a = dic.get((4,1)) 
                 elif(cnt_a==3):
                     Sum_a = dic.get((3,0))    
-                if(stupid_a<5):
+                if(stupid_a<4):
                     Sum_a = 0  
                 break
         for k in range(1,6):        
@@ -284,7 +384,7 @@ def eva_defence(array2D,x,y):
                     Sum_l = dic.get((4,1))   
                 elif(cnt_l==3):
                     Sum_l = dic.get((3,0)) 
-                if(stupid_l<5):
+                if(stupid_l<4):
                     Sum_l = 0 
                 break
         for k in range(1,6):        
@@ -316,7 +416,7 @@ def eva_defence(array2D,x,y):
                     Sum_r = dic.get((4,1))
                 elif(cnt_r==3):
                     Sum_r = dic.get((3,0))
-                    if(stupid_r<5):
+                    if(stupid_r<4):
                         Sum_r = 0
                 break
         
