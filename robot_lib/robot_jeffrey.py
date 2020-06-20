@@ -31,14 +31,21 @@ def eva3(array2D,size):
         for j in range(0,size):
             print("{0:^3d}".format(eva_result[i][j]), end = "")
         print()
+    print()
+    print()
+   
     for i in range(0,size):
         for j in range(0,size):
             if(eva_result[i][j] > _max):
                 _max = eva_result[i][j]
                 i_max = i
                 j_max = j
-    # print("best move (",i_max,",",j_max,")")
-    
+    if(_max == 0):
+        print("INININININ")
+        return random.randint(1,15),random.randint(1,15)
+
+    print("best move (",i_max,",",j_max,")")
+
     return i_max,j_max
 
 def eva_attack(array2D,x,y):
@@ -112,7 +119,7 @@ def eva_attack(array2D,x,y):
                     Sum_a = dic2.get((4,1)) 
                 elif(cnt_a==3):
                     Sum_a = dic2.get((3,0))    
-                if(stupid_a<5):
+                if(stupid_a<4):
                     Sum_a = 0  
                 break
         for k in range(1,6):        
