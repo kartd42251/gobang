@@ -83,6 +83,7 @@ def file_init():
     fobj.close()
 def turtle_win_rate():
     winning_turtle = turtle.Turtle()
+    
     winning_turtle.up()
     winning_turtle.hideturtle()
     winning_turtle.speed(0)
@@ -94,3 +95,4 @@ def turtle_win_rate():
     winning_turtle.write("Total:"+str(total),font = ("Arial", 15, "normal"))
     winning_turtle.goto(300,329)
     winning_turtle.write("WR:"+str(int(100000*WR)/1000)+"%",font = ("Arial", 15, "normal"))
+    return winning_turtle

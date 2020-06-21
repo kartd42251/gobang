@@ -13,10 +13,10 @@ def random_init(array2D):
         y = random.randint(1,15)
         set_X(array2D,x,y)
 def manual_init(array2D):
-    set_O(array2D,6,14)
-    set_O(array2D,7,13)
-    set_O(array2D,4,14)
-    set_X(array2D,8,12)
+    set_X(array2D,6,10)
+    set_X(array2D,8,9)
+    set_X(array2D,8,8)
+    set_X(array2D,8,7)
 
 
 def eva3(array2D,size): 

@@ -71,7 +71,7 @@ def main():
     arrow_init(user_arrow)
 
     turtle_gamefield()
-    turtle_win_rate()
+    winning_turtle = turtle_win_rate()
 
     shutdown = 0
     size = 17
@@ -131,15 +131,16 @@ def main():
             elif(user == -1):
                 turtle_check_win(size,"Comp",writer)
             #ending_surprise(user)
-        else:
-            if(if_same_spot == 0 ):
+        elif(if_same_spot == 0 ):
                 user *= -1
                 status(writer,user)
-
-    turtle.done()
-    if(mode == 1):
+    if(mode == 1 or mode == 2):
         recordTotal()    
+        winning_turtle.clear()
         print("WINNING RATE:",readWinRate())
-
+        turtle_win_rate()
+    turtle.done()
+    
+  
 if __name__ == "__main__":
     main()
