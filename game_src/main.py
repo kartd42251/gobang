@@ -71,7 +71,7 @@ def main():
     arrow_init(user_arrow)
 
     turtle_gamefield()
-    turtle_win_rate()
+    winning_turtle = turtle_win_rate()
 
     shutdown = 0
     size = 17
@@ -109,7 +109,7 @@ def main():
                 mouse_move(user_arrow,x_temp,y_temp)
                 if_same_spot = set_X(array2D, y, x)
             if(user == -1):
-                y, x = fake_self_learing(array2D,size)
+                y, x = eva3(array2D,size)
                 set_O(array2D, y, x)    
                 mouse_move(comp_arrow,x,y)
         if(mode == 2):
@@ -118,7 +118,7 @@ def main():
                 if_same_spot = set_X(array2D, y, x) 
                 mouse_move(user_arrow,x,y)
             if(user == -1):
-                y, x = eva3(array2D,size)
+                y, x = fake_self_learing(array2D,size)
                 if_same_spot = set_O(array2D, y, x)    
                 mouse_move(comp_arrow,x,y)  
 
@@ -131,15 +131,16 @@ def main():
             elif(user == -1):
                 turtle_check_win(size,"Comp",writer)
             #ending_surprise(user)
-        else:
-            if(if_same_spot == 0 ):
+        elif(if_same_spot == 0 ):
                 user *= -1
                 status(writer,user)
-
-    turtle.done()
-    if(mode == 1):
+    if(mode == 1 or mode == 2):
         recordTotal()    
+        winning_turtle.clear()
         print("WINNING RATE:",readWinRate())
-
+        turtle_win_rate()
+    turtle.done()
+    
+  
 if __name__ == "__main__":
     main()
