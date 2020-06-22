@@ -21,6 +21,9 @@ pyinstaller -F main.py -p ../game_lib/ -p ../robot_lib/ --distpath ../dist --one
 推上網路github
 	git push
 
+執行檔案
+	cd game_src
+	python3 main.py
 	
 #file add by Harrison
 已倒閉
