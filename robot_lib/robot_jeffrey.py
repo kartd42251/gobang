@@ -1,8 +1,8 @@
 import random 
 import copy
 from game_basic import *
-
-dic2 = {(4,0):250,(4,1):150,(3,0):90,(3,1):15,(2,0):20,(2,1):2,(1,0):5,(0,0):0,(0,1):0,(1,1):0,}
+dic = {(4,0):100,(4,1):20,(3,0):40,(3,1):20,(2,0):15,(2,1):2,(1,0):7,(0,0):2,(0,1):0,(1,1):0}
+dic2 = {(4,0):100,(4,1):70,(3,0):70,(3,1):10,(2,0):15,(2,1):2,(1,0):5,(0,0):2,(0,1):0,(1,1):0}
 direction = {0:(1,0),1:(0,1),2:(1,1),3:(1,-1)}
 
 
@@ -137,6 +137,7 @@ def fake_self_learing(array2D,size):
     for i in range(0,size):
         for j in range(0,size):
             if(array2D[i][j] == '.'):
+
                 eva_result[i][j] = score(array2D,i,j)
     # for i in range(0,size):
     #     for j in range(0,size):
@@ -159,7 +160,6 @@ def fake_self_learing(array2D,size):
                                 _max = eva_result[i][j]
                 if(eva_result[k][l] - _max > _min):
                     _min = eva_result[k][l]
-                    print(_min)
                     min_x = k
                     min_y = l
     # for i in range(0,size):
@@ -169,6 +169,67 @@ def fake_self_learing(array2D,size):
     # print()
     # print(min_x,min_y)
     return min_x,min_y
+
+
+
+def score_2 (array2D,x,y):
+    if(x<16 and x>0 and y<16 and y>0):
+        score = [0,0]
+        for k in range(2):
+            Sum = [0,0,0,0]
+            four_in_one = [0,0,0,0]
+            three_in_one = [0,0,0,0]
+            foolproof = [0,0,0,0]
+            double_triple =[0,0,0,0]
+            if(k == 0):
+                symbol = "X"
+            else:
+                symbol = "O"
+            for i in range(4):
+                for j in range(1,6):
+                    (v_x,v_y) = direction.get(i)
+                    (v_x2,v_y2) = (-v_x,-v_y)
+                    if(array2D[x+j*v_x][y+j*v_y] != symbol):
+                        four_in_one [i] += j-1
+                        if(array2D[x+j*v_x][y+j*v_y]=='.'): 
+                            Sum[i] +=  dic.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                            double_triple[i] += j-1
+                        elif(array2D[x+j*v_x][y+j*v_y]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic.get((j-1,1))
+                            foolproof[i] += j-1
+                        break
+                for j in range(1,6):   
+                    if(array2D[x+j*v_x2][y+j*v_y2] != symbol):
+                        four_in_one[i] += j-1
+                        if(array2D[x+j*v_x2][y+j*v_y2]=='.'): 
+                            Sum[i] +=  dic.get((j-1,0))
+                            three_in_one[i] += j-1
+                            foolproof[i] += 100
+                            double_triple[i] += j-1
+                        elif(array2D[x+j*v_x2][y+j*v_y2]=='J'): 
+                            foolproof[i] += j
+                        else:
+                            Sum[i] += dic.get((j-1,1))
+                            foolproof[i] += j-1   
+                        if(four_in_one [i]>=4):
+                            Sum[i] = dic.get((4,0))
+                        elif(double_triple[i] + double_triple[i-1]>=4):
+                            if(i == 3 or i == 1):
+                                Sum[i] = dic.get((3,0))
+                        elif(three_in_one[i]==3):
+                            Sum[i] = dic.get((3,0))
+                        if(foolproof[i] <4):
+                            Sum[i] = 0  
+                        break
+
+            score[k] = int(Sum[0] +Sum[1] +Sum[2] +Sum[3])
+        return max(score[0],score[1])   
+    else:
+        return -1
 
                     
      

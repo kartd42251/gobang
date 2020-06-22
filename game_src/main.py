@@ -91,7 +91,7 @@ def main():
         set_O(array2D,8,8)
         
     key_detect(turtle)
-    #choice_character()
+    # choice_character()
     while(not shutdown):
         turtle.update()
         global x, y, temp_x, temp_y
@@ -129,7 +129,7 @@ def main():
                 recordWin()
             elif(user == -1):
                 turtle_check_win(size,"Comp",writer)
-            #ending_surprise(user)
+            # ending_surprise(user)
         elif(if_same_spot == 0 ):
                 user *= -1
                 status(writer,user)
