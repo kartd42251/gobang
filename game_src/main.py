@@ -56,7 +56,6 @@ def key_detect(turtle):
     turtle.onkeypress(y_mius,"Up")
     turtle.onkeypress(enter,"space")
 
-
 def main():
     mode = -1 # 0 for pvp, 1 for pvc
     

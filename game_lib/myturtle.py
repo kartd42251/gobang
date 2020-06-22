@@ -92,61 +92,61 @@ def status(writer,user):
             writer.write("now is Jeffery's turn", align="center", font=("Arial", 20, "normal"))
         last_user = user
 
-def choice_character():
-    def process(x,y):
-        if(-290 <= x <= -110 ):
-            img = IMG[0]
-            img.goto(-370,0)
-            IMG[1].hideturtle() 
-            IMG[2].hideturtle() 
-        elif(-90 <= x <= 90):
-            img = IMG[1]
-            img.goto(-370,0)
-            IMG[0].hideturtle()
-            IMG[2].hideturtle() 
-        elif( 110 <= x <= 290 ):
-            img = IMG[2]
-            img.goto(-370,0)
-            IMG[0].hideturtle()
-            IMG[1].hideturtle() 
-        jef = turtle.Turtle()
-        jef.up()
-        turtle.addshape("./img0.gif")
-        jef.shape("./img0.gif")
-        jef.goto(350,0)
-        return
+# def choice_character():
+#     def process(x,y):
+#         if(-290 <= x <= -110 ):
+#             img = IMG[0]
+#             img.goto(-370,0)
+#             IMG[1].hideturtle() 
+#             IMG[2].hideturtle() 
+#         elif(-90 <= x <= 90):
+#             img = IMG[1]
+#             img.goto(-370,0)
+#             IMG[0].hideturtle()
+#             IMG[2].hideturtle() 
+#         elif( 110 <= x <= 290 ):
+#             img = IMG[2]
+#             img.goto(-370,0)
+#             IMG[0].hideturtle()
+#             IMG[1].hideturtle() 
+#         jef = turtle.Turtle()
+#         jef.up()
+#         turtle.addshape("./img0.gif")
+#         jef.shape("./img0.gif")
+#         jef.goto(350,0)
+#         return
 
-    IMG = [0]*3
-    randList = [2,3,4,5,6,7,8,9,10]
-    rand_index = random.sample(randList,3)       
+#     IMG = [0]*3
+#     randList = [2,3,4,5,6,7,8,9,10]
+#     rand_index = random.sample(randList,3)       
 
-    for i in range(3):
+#     for i in range(3):
         
-        IMG[i] = turtle.Turtle()
-        turtle.addshape("./img"+str(rand_index[i])+".gif") 
-        IMG[i].shape("./img"+str(rand_index[i])+".gif")  
-        IMG[i].up()
-        IMG[i].goto(200*(i-1),0)
-        IMG[i].onclick(process)
+#         IMG[i] = turtle.Turtle()
+#         turtle.addshape("./img"+str(rand_index[i])+".gif") 
+#         IMG[i].shape("./img"+str(rand_index[i])+".gif")  
+#         IMG[i].up()
+#         IMG[i].goto(200*(i-1),0)
+#         IMG[i].onclick(process)
 
 
-def ending_surprise(user):
-    turtle.addshape("./img21.gif") 
-    turtle.addshape("./img22.gif") 
-    ending_turtle = turtle.Turtle()
-    ending_writer = turtle.Turtle()
-    ending_writer.up()
-    ending_writer.hideturtle()
-    ending_writer.goto(0,-370)
-    if(user == 1):
-        ending_turtle.shape("./img21.gif")
-        ending_writer.write("你就棒", align="center", font=("Arial", 50, "normal"))
-    elif(user == -1):
-        ending_turtle.shape("./img22.gif")
-        ending_writer.write("吳隆傑又在使", align="center", font=("Arial", 50, "normal"))
-    def ending_clear(x,y):
-        ending_turtle.hideturtle()
-    ending_turtle.onclick(ending_clear)
+# def ending_surprise(user):
+#     turtle.addshape("./img21.gif") 
+#     turtle.addshape("./img22.gif") 
+#     ending_turtle = turtle.Turtle()
+#     ending_writer = turtle.Turtle()
+#     ending_writer.up()
+#     ending_writer.hideturtle()
+#     ending_writer.goto(0,-370)
+#     if(user == 1):
+#         ending_turtle.shape("./img21.gif")
+#         ending_writer.write("你就棒", align="center", font=("Arial", 50, "normal"))
+#     elif(user == -1):
+#         ending_turtle.shape("./img22.gif")
+#         ending_writer.write("吳隆傑又在使", align="center", font=("Arial", 50, "normal"))
+#     def ending_clear(x,y):
+#         ending_turtle.hideturtle()
+#     ending_turtle.onclick(ending_clear)
 
 def comp_mouse_init(comp_m):
     comp_m.speed(0)
