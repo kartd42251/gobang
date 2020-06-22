@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, '../game_lib')
 sys.path.insert(1, '../robot_lib')
-
+from goto import with_goto
 from myturtle import *
 from game_basic import *
 from robot_jeffrey import *
@@ -56,7 +56,9 @@ def key_detect(turtle):
     turtle.onkeypress(y_mius,"Up")
     turtle.onkeypress(enter,"space")
 
+@with_goto
 def main():
+    label .begin
     mode = -1 # 0 for pvp, 1 for pvc
     
     writer = turtle.Turtle()
@@ -113,11 +115,11 @@ def main():
                 mouse_move(comp_arrow,x,y)
         if(mode == 2):
             if(user == 1):
-                y, x = eva3(array2D,size)
+                y, x = fake_self_learing(array2D,size)
                 if_same_spot = set_X(array2D, y, x) 
                 mouse_move(user_arrow,x,y)
             if(user == -1):
-                y, x = fake_self_learing(array2D,size)
+                y, x =  eva3(array2D,size)
                 if_same_spot = set_O(array2D, y, x)    
                 mouse_move(comp_arrow,x,y)  
 
@@ -138,6 +140,17 @@ def main():
         winning_turtle.clear()
         print("WINNING RATE:",readWinRate())
         turtle_win_rate()
+    again = turtle.textinput("AGAIN MODE","Again?(y/n)")
+    if(again == 'y'):
+        
+        turtle.reset()
+        writer.reset()
+        user_arrow.reset()
+        comp_arrow.reset()
+        turtle.clearscreen()
+        turtle.right(270)
+        goto .begin
+
     turtle.done()
     
   
