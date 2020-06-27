@@ -115,7 +115,7 @@ def main():
                 mouse_move(comp_arrow,x,y)
         if(mode == 2):
             if(user == 1):
-                y, x = fake_self_learing(array2D,size)
+                y, x = eva3(array2D, size)
                 if_same_spot = set_X(array2D, y, x) 
                 mouse_move(user_arrow,x,y)
             if(user == -1):

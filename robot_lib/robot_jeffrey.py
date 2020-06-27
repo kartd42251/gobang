@@ -139,12 +139,12 @@ def fake_self_learing(array2D,size):
             if(array2D[i][j] == '.'):
 
                 eva_result[i][j] = score(array2D,i,j)
-    # for i in range(0,size):
-    #     for j in range(0,size):
-    #         print("{0:^3d}".format(eva_result[i][j]), end = "")
-    #     print()
-    # print()
-    # print()
+    for i in range(0,size):
+        for j in range(0,size):
+            print("{0:^3d}".format(eva_result[i][j]), end = "")
+        print()
+    print()
+    print()
     for k in range(0,size):
         for l in range(0,size):
             if(eva_result[k][l] >0):
